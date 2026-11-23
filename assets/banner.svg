@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="480" viewBox="0 0 1280 480" role="img" aria-label="Ework, le compagnon de bureau de votre agent">
+  <defs>
+    <radialGradient id="glow" cx="0.72" cy="0.5" r="0.45">
+      <stop offset="0" stop-color="#E600BF" stop-opacity="0.28"/>
+      <stop offset="0.55" stop-color="#E600BF" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#E600BF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16232A"/>
+      <stop offset="1" stop-color="#0B1216"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF2BD6"/>
+      <stop offset="1" stop-color="#C800A6"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="480" rx="28" fill="url(#bg)"/>
+  <rect width="1280" height="480" rx="28" fill="url(#grid)"/>
+  <rect width="1280" height="480" rx="28" fill="url(#glow)"/>
+
+  <!-- A window edge, where Ework sits -->
+  <rect x="760" y="318" width="400" height="150" rx="14" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.10"/>
+  <circle cx="784" cy="338" r="5" fill="#FFFFFF" fill-opacity="0.18"/>
+  <circle cx="802" cy="338" r="5" fill="#FFFFFF" fill-opacity="0.18"/>
+  <circle cx="820" cy="338" r="5" fill="#FFFFFF" fill-opacity="0.18"/>
+  <rect x="784" y="370" width="210" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.10"/>
+  <rect x="784" y="392" width="300" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.07"/>
+  <rect x="784" y="414" width="170" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.07"/>
+
+  <!-- Speech bubble -->
+  <g transform="translate(1000 112)">
+    <rect width="210" height="58" rx="18" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.16"/>
+    <path d="M34 58 L44 74 L56 58 Z" fill="#FFFFFF" fill-opacity="0.08"/>
+    <circle cx="30" cy="29" r="5" fill="#82FFE4"/>
+    <text x="46" y="35" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="17" fill="#FFFFFF" fill-opacity="0.86">Je rédige le rapport</text>
+  </g>
+
+  <!-- Shadow -->
+  <ellipse cx="930" cy="318" rx="70" ry="7" fill="#000000" fill-opacity="0.4"/>
+
+  <!-- Ework: the heart of the EWE mark -->
+  <g transform="translate(820 152) scale(0.92)">
+    <path fill="url(#body)" d="M148.343 19.6725L120.95 58.6803C120.853 58.819 120.727 58.9325 120.58 59.012C120.434 59.0915 120.271 59.1347 120.106 59.1382C119.94 59.1418 119.776 59.1055 119.627 59.0324C119.477 58.9592 119.346 58.8512 119.244 58.7168L90.0256 20.7966C89.2698 19.8159 88.3216 19.0111 87.2433 18.4348C86.1649 17.8585 84.9807 17.5238 83.7682 17.4526C82.5557 17.3814 81.3423 17.5753 80.2076 18.0217C79.0728 18.468 78.0423 19.1567 77.1835 20.0426L18.5237 80.5523C16.9077 82.2208 16 84.4828 16 86.8414C16 89.2 16.9077 91.462 18.5237 93.1305L88.8568 165.692C97.1173 174.213 108.32 179 120.002 179C131.683 179 142.886 174.213 151.146 165.692L221.472 93.1378C222.273 92.3126 222.909 91.3326 223.343 90.254C223.776 89.1753 224 88.019 224 86.8513C224 85.6835 223.778 84.5271 223.345 83.4482C222.911 82.3693 222.277 81.3889 221.476 80.5633L161.418 18.6015C160.536 17.6928 159.473 16.9921 158.303 16.5478C157.133 16.1035 155.884 15.9261 154.641 16.0279C153.398 16.1297 152.192 16.5082 151.104 17.1374C150.017 17.7666 149.075 18.6315 148.343 19.6725Z"/>
+    <path d="M40 88 L84 42" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="7" stroke-linecap="round"/>
+    <ellipse cx="94" cy="100" rx="11" ry="15" fill="#131D22"/>
+    <ellipse cx="146" cy="100" rx="11" ry="15" fill="#131D22"/>
+    <circle cx="98" cy="94" r="4" fill="#FFFFFF"/>
+    <circle cx="150" cy="94" r="4" fill="#FFFFFF"/>
+    <path d="M108 128 Q120 138 132 128" fill="none" stroke="#131D22" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="74" cy="124" rx="9" ry="5" fill="#FFFFFF" fill-opacity="0.18"/>
+    <ellipse cx="166" cy="124" rx="9" ry="5" fill="#FFFFFF" fill-opacity="0.18"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g font-family="Space Grotesk, Segoe UI, Helvetica, Arial, sans-serif">
+    <text x="88" y="200" font-size="104" font-weight="700" fill="#FFFFFF" letter-spacing="-3">Ework</text>
+    <circle cx="398" cy="190" r="10" fill="#E600BF"/>
+    <text x="92" y="258" font-size="30" fill="#FFFFFF" fill-opacity="0.82">Le compagnon de bureau de votre agent.</text>
+    <text x="92" y="300" font-size="22" fill="#FFFFFF" fill-opacity="0.52">Parlez-lui, confiez-lui des missions, regardez-le travailler.</text>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="17">
+    <rect x="92" y="352" width="116" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <text x="150" y="377" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.78">Windows</text>
+    <rect x="220" y="352" width="96" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <text x="268" y="377" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.78">Gratuit</text>
+    <rect x="328" y="352" width="176" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <text x="416" y="377" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.78">100 % sur votre PC</text>
+  </g>
+</svg>

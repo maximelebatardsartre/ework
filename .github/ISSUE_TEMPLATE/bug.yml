@@ -1,0 +1,34 @@
+name: Signaler un problème
+description: Quelque chose ne fonctionne pas comme prévu dans Ework.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de prendre le temps de signaler ce problème. **N'écrivez jamais votre clé d'agent, un mot de passe ou l'adresse publique de votre serveur ici** : ce dépôt est public.
+  - type: input
+    id: version
+    attributes:
+      label: Version d'Ework
+      description: Réglages › À propos.
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Version de Windows
+      placeholder: Windows 11 24H2
+  - type: textarea
+    id: what
+    attributes:
+      label: Ce qui se passe
+      description: Ce que vous avez fait, ce que vous attendiez, ce qui s'est passé.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Journal de connexion (facultatif)
+      description: Réglages › Agent › Journal. La clé n'y apparaît jamais, mais relisez avant de coller.
+      render: text
