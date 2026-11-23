@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/maximelebatardsartre/ework/releases/latest"><img alt="Télécharger pour Windows" src="https://img.shields.io/badge/T%C3%A9l%C3%A9charger-Windows-E600BF?style=for-the-badge&logo=windows&logoColor=white"></a>
   &nbsp;
-  <a href="https://github.com/maximelebatardsartre/ework/releases/latest"><img alt="Télécharger pour macOS" src="https://img.shields.io/badge/T%C3%A9l%C3%A9charger-macOS-E600BF?style=for-the-badge&logo=apple&logoColor=white"></a>
+  <a href="https://github.com/maximelebatardsartre/ework/releases/latest"><img alt="Télécharger pour macOS (bêta)" src="https://img.shields.io/badge/T%C3%A9l%C3%A9charger-macOS%20(b%C3%AAta)-E600BF?style=for-the-badge&logo=apple&logoColor=white"></a>
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
 
 ---
 
-**Ework** est un compagnon de bureau pour Windows et macOS. C'est le visage de votre agent d'intelligence artificielle : on lui parle, on lui confie des missions et on le voit travailler, sans terminal.
+**Ework** est un compagnon de bureau pour Windows et macOS (en bêta). C'est le visage de votre agent d'intelligence artificielle : on lui parle, on lui confie des missions et on le voit travailler, sans terminal.
 
 Ework est le cœur du logo EWE, dessiné et animé entièrement en code. Il marche sur le bord de vos fenêtres, saute de l'une à l'autre, suit l'heure de la journée, réagit à la souris, et se fait discret dès qu'une application passe en plein écran.
 
@@ -48,7 +48,7 @@ Ework est le cœur du logo EWE, dessiné et animé entièrement en code. Il marc
 
 Il vous faut un agent [Hermes](https://github.com/NousResearch/hermes-agent) avec son serveur d'API, sur votre ordinateur, votre réseau ou un serveur.
 
-| | Windows | macOS |
+| | Windows | macOS (bêta) |
 | --- | --- | --- |
 | **Système** | Windows 10 ou 11, 64 bits | macOS 11 Big Sur ou plus récent, Apple Silicon ou Intel |
 | **Fichier** | `Ework_x.y.z_x64-setup.exe` | `Ework_x.y.z_universal.dmg` |
@@ -65,7 +65,10 @@ Il vous faut un agent [Hermes](https://github.com/NousResearch/hermes-agent) ave
 
 Pour désinstaller : Paramètres › Applications › Ework › Désinstaller.
 
-### Sur Mac
+### Sur Mac (bêta)
+
+> [!IMPORTANT]
+> **La version Mac est en bêta.** Elle a toutes les fonctions de la version Windows, mais elle n'a pas encore été essayée sur assez de Mac. Si quelque chose ne va pas, [signalez-le](https://github.com/maximelebatardsartre/ework/issues/new/choose) : précisez votre version de macOS et votre type de Mac (Apple Silicon ou Intel).
 
 1. Ouvrez la [dernière version](https://github.com/maximelebatardsartre/ework/releases/latest) et, dans « Assets », téléchargez **`Ework_x.y.z_universal.dmg`**.
 2. Ouvrez-le et glissez **Ework** dans le dossier **Applications**.
