@@ -27,7 +27,7 @@ Tout cela est réglable dans « Réglages », groupe « Assistance », et rien n
 - le fait qu'un son joue et le fait qu'une copie a eu lieu, jamais ce qui a été copié ;
 - la position et la taille des fenêtres, pour marcher sur leur bord, jamais leur contenu.
 
-Désactivés au départ : le titre des fenêtres, le titre de ce qui joue, l'écoute de quelques raccourcis clavier, et la lecture du texte d'une fenêtre. Cette dernière ne se fait que sur un geste de votre part, pour un programme que vous avez autorisé par son nom ; le texte lu vous est montré avant tout envoi. Les gestionnaires de mots de passe, les fenêtres de navigation privée et les champs de mot de passe ne sont jamais lus.
+Désactivés au départ : le titre des fenêtres, le titre de ce qui joue (sous Windows seulement), l'écoute de quelques raccourcis clavier, et la lecture du texte d'une fenêtre. Sur macOS, ces options demandent chacune une autorisation du système (Enregistrement de l'écran pour le seul titre des fenêtres, Surveillance de l'entrée, Accessibilité), que vous pouvez retirer à tout moment dans Réglages Système › Confidentialité et sécurité. Cette dernière ne se fait que sur un geste de votre part, pour un programme que vous avez autorisé par son nom ; le texte lu vous est montré avant tout envoi. Les gestionnaires de mots de passe, les fenêtres de navigation privée et les champs de mot de passe ne sont jamais lus.
 
 Quand Ework propose une aide, la demande à l'agent est rédigée et montrée : rien ne part avant que vous choisissiez « Envoyer ».
 
@@ -35,14 +35,14 @@ Quand Ework propose une aide, la demande à l'agent est rédigée et montrée : 
 
 | Quoi | Où |
 | --- | --- |
-| Réglages, conversations, progression, nouvelles de l'agent | `%APPDATA%\works.ewe.ework\` |
-| Clé de l'agent, mot de passe du service de fichiers | Gestionnaire d'identification de Windows |
+| Réglages, conversations, progression, nouvelles de l'agent | Windows : `%APPDATA%\works.ewe.ework\` · macOS : `~/Library/Application Support/works.ewe.ework/` |
+| Clé de l'agent, mot de passe du service de fichiers | Gestionnaire d'identification de Windows · trousseau de macOS |
 
 La clé n'apparaît dans aucun fichier ni dans le journal de connexion. Pour tout effacer, désinstallez Ework puis supprimez le dossier ci-dessus ; la clé se retire avant, depuis « Réglages », groupe « Agent », bouton « Retirer ».
 
 ## Mises à jour
 
-Les mises à jour sont signées. Ework vérifie cette signature avant toute installation et refuse une mise à jour qui ne la porte pas. Vous choisissez dans les réglages entre mises à jour automatiques et manuelles. Les installeurs sont compilés uniquement par GitHub Actions.
+Les mises à jour sont signées. Ework vérifie cette signature avant toute installation et refuse une mise à jour qui ne la porte pas. Vous choisissez dans les réglages entre mises à jour automatiques et manuelles. Les installeurs Windows et macOS sont compilés uniquement par GitHub Actions.
 
 ## Cartes à partager
 

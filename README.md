@@ -3,7 +3,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/maximelebatardsartre/ework/releases/latest"><img alt="Télécharger pour Windows" src="https://img.shields.io/badge/T%C3%A9l%C3%A9charger-Windows%2010%20%2F%2011-E600BF?style=for-the-badge&logo=windows&logoColor=white"></a>
+  <a href="https://github.com/maximelebatardsartre/ework/releases/latest"><img alt="Télécharger pour Windows" src="https://img.shields.io/badge/T%C3%A9l%C3%A9charger-Windows-E600BF?style=for-the-badge&logo=windows&logoColor=white"></a>
+  &nbsp;
+  <a href="https://github.com/maximelebatardsartre/ework/releases/latest"><img alt="Télécharger pour macOS" src="https://img.shields.io/badge/T%C3%A9l%C3%A9charger-macOS-E600BF?style=for-the-badge&logo=apple&logoColor=white"></a>
 </p>
 
 <p align="center">
@@ -15,7 +17,7 @@
 
 ---
 
-**Ework** est un compagnon de bureau pour Windows. C'est le visage de votre agent d'intelligence artificielle : on lui parle, on lui confie des missions et on le voit travailler, sans terminal.
+**Ework** est un compagnon de bureau pour Windows et macOS. C'est le visage de votre agent d'intelligence artificielle : on lui parle, on lui confie des missions et on le voit travailler, sans terminal.
 
 Ework est le cœur du logo EWE, dessiné et animé entièrement en code. Il marche sur le bord de vos fenêtres, saute de l'une à l'autre, suit l'heure de la journée, réagit à la souris, et se fait discret dès qu'une application passe en plein écran.
 
@@ -44,17 +46,49 @@ Ework est le cœur du logo EWE, dessiné et animé entièrement en code. Il marc
 
 ## Installer Ework
 
-**Configuration** : Windows 10 ou 11, 64 bits. Un agent [Hermes](https://github.com/NousResearch/hermes-agent) avec son serveur d'API, sur votre ordinateur, votre réseau ou un serveur.
+Il vous faut un agent [Hermes](https://github.com/NousResearch/hermes-agent) avec son serveur d'API, sur votre ordinateur, votre réseau ou un serveur.
 
-1. Ouvrez la [dernière version](https://github.com/maximelebatardsartre/ework/releases/latest).
-2. Dans « Assets », téléchargez **`Ework_x.y.z_x64-setup.exe`**.
-3. Lancez-le. L'installation se fait pour votre seul compte Windows, **sans droits administrateur**.
-4. Ework apparaît sur le bord de votre écran.
+| | Windows | macOS |
+| --- | --- | --- |
+| **Système** | Windows 10 ou 11, 64 bits | macOS 11 Big Sur ou plus récent, Apple Silicon ou Intel |
+| **Fichier** | `Ework_x.y.z_x64-setup.exe` | `Ework_x.y.z_universal.dmg` |
+| **Droits administrateur** | Non | Non |
+
+### Sur Windows
+
+1. Ouvrez la [dernière version](https://github.com/maximelebatardsartre/ework/releases/latest) et, dans « Assets », téléchargez **`Ework_x.y.z_x64-setup.exe`**.
+2. Lancez-le. L'installation se fait pour votre seul compte Windows.
+3. Ework apparaît sur le bord de votre écran, et son icône près de l'horloge.
 
 > [!NOTE]
 > **« Windows a protégé votre ordinateur »** : l'installeur n'a pas de certificat de signature de code payant. Cliquez sur **Informations complémentaires**, puis sur **Exécuter quand même**. Vous pouvez d'abord [vérifier le fichier](#vérifier-le-fichier-téléchargé).
 
-Pour désinstaller : Paramètres de Windows › Applications › Ework › Désinstaller.
+Pour désinstaller : Paramètres › Applications › Ework › Désinstaller.
+
+### Sur Mac
+
+1. Ouvrez la [dernière version](https://github.com/maximelebatardsartre/ework/releases/latest) et, dans « Assets », téléchargez **`Ework_x.y.z_universal.dmg`**.
+2. Ouvrez-le et glissez **Ework** dans le dossier **Applications**.
+3. Lancez Ework depuis Applications. Il apparaît sur votre écran, et son icône dans la barre des menus (pas dans le Dock).
+
+> [!IMPORTANT]
+> **Premier lancement** : Ework n'est pas encore notarié par Apple, donc macOS le bloque une première fois (« Ework ne peut pas être ouvert… »). Cliquez sur **OK**, puis ouvrez **Réglages Système › Confidentialité et sécurité**, descendez jusqu'au message sur Ework et cliquez sur **Ouvrir quand même**. Confirmez avec votre mot de passe : ce ne sera plus demandé.
+>
+> Si macOS dit que l'application est « endommagée », c'est la même protection : dans le Terminal, lancez `xattr -cr /Applications/Ework.app`, puis ouvrez Ework normalement.
+
+Pour désinstaller : glissez Ework d'Applications vers la Corbeille.
+
+#### Les autorisations de macOS
+
+Ework fonctionne sans aucune autorisation : le personnage, la bulle, l'agent, le bord des fenêtres, le plein écran. Trois options de l'assistance, désactivées au départ, demandent un accord que macOS vous propose la première fois :
+
+| Option d'Ework | Autorisation macOS | Ce qu'Ework en fait |
+| --- | --- | --- |
+| Le titre des fenêtres | **Enregistrement de l'écran** | Lire le **titre** de la fenêtre au premier plan. Aucune image de l'écran n'est prise. |
+| L'écoute des raccourcis | **Surveillance de l'entrée** | Reconnaître sept raccourcis (Cmd+C, V, X, Z, S, Cmd+Tab, capture d'écran). Toute autre touche est ignorée sur-le-champ. |
+| La lecture d'une fenêtre | **Accessibilité** | Lire le texte d'une fenêtre, seulement sur votre geste et pour un programme autorisé. Jamais un champ de mot de passe. |
+
+Ces accords se donnent ou se retirent dans **Réglages Système › Confidentialité et sécurité**. Sur Mac, Ework sait qu'un son joue, mais pas le titre du morceau.
 
 ## Relier votre agent
 
@@ -64,7 +98,7 @@ Pour désinstaller : Paramètres de Windows › Applications › Ework › Dési
    - ou un bloc qui contient l'adresse et la clé (les lignes de son fichier `.env`, par exemple).
 3. Ni adresse ni clé sous la main ? **Demander à mon agent** copie une consigne à coller dans la conversation de votre agent : il répond par un bloc à coller dans Ework.
 
-La clé est rangée dans le gestionnaire d'identification de Windows et n'est jamais affichée. Ework accepte HTTPS partout, et HTTP seulement vers votre ordinateur ou votre réseau privé.
+La clé est rangée dans le trousseau du système (gestionnaire d'identification de Windows, trousseau de macOS) et n'est jamais affichée. Ework accepte HTTPS partout, et HTTP seulement vers votre ordinateur ou votre réseau privé.
 
 <details>
 <summary><b>Préparer l'agent à la main</b></summary>
@@ -89,10 +123,16 @@ Dans « Réglages », vous choisissez entre mises à jour **automatiques** ou **
 Les installeurs sont compilés uniquement par GitHub Actions, jamais sur un ordinateur personnel. Pour vérifier que votre fichier est bien celui publié :
 
 1. Téléchargez `SHA256SUMS.txt` dans la même version.
-2. Dans PowerShell, dans le dossier du téléchargement :
+2. Dans le dossier du téléchargement :
 
    ```powershell
+   # Windows, dans PowerShell
    Get-FileHash .\Ework_x.y.z_x64-setup.exe
+   ```
+
+   ```bash
+   # macOS, dans le Terminal
+   shasum -a 256 Ework_x.y.z_universal.dmg
    ```
 
 3. L'empreinte affichée doit être identique à celle du fichier.

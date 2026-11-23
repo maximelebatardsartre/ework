@@ -63,11 +63,11 @@
     <text x="92" y="300" font-size="22" fill="#FFFFFF" fill-opacity="0.52">Parlez-lui, confiez-lui des missions, regardez-le travailler.</text>
   </g>
   <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="17">
-    <rect x="92" y="352" width="116" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
-    <text x="150" y="377" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.78">Windows</text>
-    <rect x="220" y="352" width="96" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
-    <text x="268" y="377" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.78">Gratuit</text>
-    <rect x="328" y="352" width="176" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
-    <text x="416" y="377" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.78">100 % sur votre PC</text>
+    <rect x="92" y="352" width="176" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <text x="180" y="377" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.78">Windows · macOS</text>
+    <rect x="280" y="352" width="96" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <text x="328" y="377" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.78">Gratuit</text>
+    <rect x="388" y="352" width="220" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
+    <text x="498" y="377" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.78">100 % sur votre ordinateur</text>
   </g>
 </svg>
