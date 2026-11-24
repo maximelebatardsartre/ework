@@ -15,6 +15,8 @@
   <a href="LICENCE-UTILISATION.md"><img alt="Licence propriétaire" src="https://img.shields.io/badge/licence-propri%C3%A9taire-131D22?style=flat-square"></a>
 </p>
 
+<p align="center"><a href="https://maximelebatardsartre.github.io/ework/"><b>Découvrir Ework en animation sur son site</b></a></p>
+
 ---
 
 **Ework** est un compagnon de bureau pour Windows et macOS (en bêta). C'est le visage de votre agent d'intelligence artificielle : on lui parle, on lui confie des missions et on le voit travailler, sans terminal.
