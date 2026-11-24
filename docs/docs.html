@@ -404,6 +404,45 @@
           </div>
         </section>
 
+        <section id="acp">
+          <h2>Agents de code : Claude Code, Codex, Gemini…</h2>
+          <p>Au lieu d'un serveur Hermes, l'agent d'Ework peut être un agent de code qu'il lance sur l'ordinateur, par l'<a href="https://agentclientprotocol.com" rel="noopener">Agent Client Protocol</a> (ACP) : JSON-RPC 2.0, un message par ligne, sur l'entrée et la sortie standard de l'agent.</p>
+          <div class="table">
+            <table>
+              <thead><tr><th>Agent</th><th>Commande lancée</th></tr></thead>
+              <tbody>
+                <tr><td>Claude Code</td><td><code>npx -y @agentclientprotocol/claude-agent-acp</code></td></tr>
+                <tr><td>Codex</td><td><code>npx -y @agentclientprotocol/codex-acp</code></td></tr>
+                <tr><td>Gemini CLI</td><td><code>npx -y @google/gemini-cli --acp</code></td></tr>
+                <tr><td>Antigravity</td><td><code>agy acp</code> (Antigravity CLI ; trouvé aussi dans <code>%LOCALAPPDATA%\agy\bin</code> ou <code>~/.local/bin</code>), connexion : <code>agy acp --login</code></td></tr>
+                <tr><td>GitHub Copilot</td><td><code>npx -y @github/copilot --acp</code></td></tr>
+                <tr><td>OpenCode, Qwen Code, Goose, Cursor Agent</td><td><code>opencode acp</code>, <code>npx -y @qwen-code/qwen-code --acp</code>, <code>goose acp</code>, <code>cursor-agent acp</code></td></tr>
+                <tr><td>Autre agent</td><td>Toute commande qui parle ACP</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul>
+            <li><strong>Lancement</strong> : par le shell du système, dans le dossier de travail choisi (cmd.exe caché sous Windows, shell de connexion sous macOS pour retrouver votre PATH). Les agents <code>npx</code> demandent Node.js et se téléchargent au premier lancement. À la fermeture d'Ework ou au changement d'agent, tout l'arbre de processus est arrêté.</li>
+            <li><strong>Échange</strong> : <code>initialize</code> (protocole 1), <code>session/new</code> par conversation, <code>session/prompt</code> par mission, <code>session/cancel</code> pour arrêter. Les <code>session/update</code> deviennent des gestes : <code>tool_call</code> par genre (<code>read</code>, <code>edit</code>, <code>search</code>, <code>execute</code>, <code>fetch</code>…), <code>agent_message_chunk</code> pour la réponse, <code>plan</code> pour la liste à cocher de l'agent.</li>
+            <li><strong>Accords</strong> : <code>session/request_permission</code> s'affiche dans la bulle avec « Autoriser », « Toujours autoriser » (si l'agent propose <code>allow_always</code>) et « Refuser ».</li>
+            <li><strong>Aucun accès déclaré</strong> : <code>fs</code> et <code>terminal</code> à <code>false</code>. L'agent travaille avec ses propres outils ; Ework ne lit ni n'écrit de fichier pour lui.</li>
+            <li><strong>Connexion</strong> : celle de l'agent, faite une fois dans un terminal (<code>claude</code>, <code>codex login</code>…). Ework ne garde aucune clé pour lui ; l'erreur <code>-32000</code> affiche la commande à lancer.</li>
+          </ul>
+        </section>
+
+        <section id="editeurs">
+          <h2>Suivre vos agents dans l'éditeur</h2>
+          <p>Claude Code (terminal et VS Code), Codex et Antigravity peuvent prévenir Ework à chaque étape, sans qu'Ework les lance : <em>Réglages › Éditeurs › Installer le relais</em>.</p>
+          <ul>
+            <li><strong>Où</strong> : <code>~/.claude/settings.json</code>, <code>~/.codex/hooks.json</code>, <code>~/.gemini/config/hooks.json</code>. Ework en garde d'abord une copie <code>.ework-backup</code>, ajoute ses entrées, et les retire exactement à la demande : elles se reconnaissent à leur adresse <code>/ework-hook/</code>.</li>
+            <li><strong>Relais</strong> : Ework lui-même, lancé par l'agent avec <code>ework --relay &lt;agent&gt; &lt;événement&gt; &lt;port&gt;</code>. Il lit ce que l'agent passe au hook sur son entrée, le transmet à <code>http://127.0.0.1:47801/ework-hook/&lt;agent&gt;/&lt;événement&gt;</code> avec un jeton de 32 octets lu dans le trousseau (jamais écrit dans les réglages de l'agent), affiche la réponse et sort toujours avec le code 0. Ework fermé, l'agent continue normalement : Antigravity reçoit <code>{"decision":"allow"}</code>, qui lui rend la main.</li>
+            <li><strong>Antigravity</strong> : un ensemble nommé <code>ework</code> dans <code>~/.gemini/config/hooks.json</code> (<code>SessionStart</code>, <code>PreInvocation</code>, <code>PreToolUse</code>, <code>PostToolUse</code>, <code>Stop</code>). Antigravity n'a pas d'événement de demande d'accord : Ework suit, sans répondre à sa place. Ses relais fonctionnent dans Antigravity CLI ; l'éditeur et l'application ne les déclenchent pas encore toujours.</li>
+            <li><strong>Événements</strong> : début de session, demande, <code>PreToolUse</code>, <code>PostToolUse</code>, échecs, notifications, fin. Missions affiche « En direct dans vos éditeurs » : projet, action en cours, fichiers modifiés, commandes, échecs, durée.</li>
+            <li><strong>Accords</strong> : le <code>PermissionRequest</code> de Claude Code et de Codex attend votre réponse dans la bulle (jusqu'à 110 s) et revient sous la forme qu'ils attendent ; sans réponse, l'éditeur vous demande comme d'habitude. Codex demande de valider une fois le relais avec <code>/hooks</code>.</li>
+            <li><strong>Fin de tâche</strong> : au-delà de 30 s, un bilan (« 3 fichiers modifiés · 1 commande · 2 min »), et une notification du système si Ework est caché.</li>
+          </ul>
+        </section>
+
         <section id="signaler">
           <h2>Signaler un problème</h2>
           <p>Dans Ework, <em>Réglages › Signaler un problème</em> (ou « Signaler un problème… » dans le menu de l'icône près de l'horloge) prépare le rapport :</p>
