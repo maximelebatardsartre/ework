@@ -16,6 +16,7 @@ Faits clés :
 
 - [Présentation](https://maximelebatardsartre.github.io/ework/) : ce que fait Ework, ses animations, son apparence, la confidentialité, les questions fréquentes, les téléchargements.
 - [Documentation technique](https://maximelebatardsartre.github.io/ework/docs.html) : architecture, connexion à l'API Hermes, cycle d'une mission, événements, accords, conversations, webhook, fichiers, sécurité, référence des appels.
+- [Les animations](https://maximelebatardsartre.github.io/ework/animations.html) : les 84 animations d'Ework, ce que chacune montre et ce qui la déclenche (routines de la journée, mission de l'agent, outil utilisé, commande d'un agent de code, souris, clavier).
 
 ## Téléchargement
 
