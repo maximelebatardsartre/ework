@@ -404,6 +404,20 @@
           </div>
         </section>
 
+        <section id="signaler">
+          <h2>Signaler un problème</h2>
+          <p>Dans Ework, <em>Réglages › Signaler un problème</em> (ou « Signaler un problème… » dans le menu de l'icône près de l'horloge) prépare le rapport :</p>
+          <ul>
+            <li>un titre, ce qui s'est passé, comment le reproduire, jusqu'à six captures d'écran (PNG, JPG, WebP ou GIF, 12 Mo chacune), collées avec Ctrl+V ou choisies ;</li>
+            <li>sur demande, le journal de connexion, sans la clé ni les mots de passe ;</li>
+            <li>la version d'Ework et le système, ajoutés d'eux-mêmes.</li>
+          </ul>
+          <p><strong>Ework n'envoie rien lui-même.</strong> Il écrit <code>rapport.txt</code>, les captures et le journal dans un dossier de l'ordinateur, ouvre la messagerie avec le mail prêt pour <code>contact@ewe.works</code>, et montre le dossier pour joindre les fichiers. Les secrets sont masqués dans le rapport comme dans l'historique.</p>
+          <p>L'objet suit toujours la même forme, pour que l'équipe trie les rapports à part :</p>
+          <pre><code><span class="u">[EWORK-BUG]</span> v0.1.6 · Windows 11 · <span class="s">La bulle ne s'ouvre plus</span></code></pre>
+          <p>Sans Ework sous la main, écrivez à <a href="mailto:contact@ewe.works?subject=%5BEWORK-BUG%5D%20v%3F%20%C2%B7%20syst%C3%A8me%20%C2%B7%20&amp;body=Ce%20qui%20s%27est%20pass%C3%A9%20%3A%0A%0APour%20le%20reproduire%20%3A%0A%0A%28Joignez%20vos%20captures%20d%27%C3%A9cran.%20Depuis%20Ework%2C%20R%C3%A9glages%20%E2%80%BA%20Signaler%20un%20probl%C3%A8me%20pr%C3%A9pare%20ce%20mail%20pour%20vous.%29%0A">contact@ewe.works</a> avec ce même début d'objet.</p>
+        </section>
+
         <section id="reference">
           <h2>Référence des appels</h2>
           <p>Tous les appels qu'Ework fait à l'agent, et rien d'autre.</p>
@@ -451,6 +465,7 @@
         <a href="https://github.com/maximelebatardsartre/ework/blob/main/LICENCE-UTILISATION.md">Licence d'utilisation</a>
         <a href="https://github.com/maximelebatardsartre/ework/blob/main/CONFIDENTIALITE.md">Confidentialité</a>
         <a href="https://github.com/maximelebatardsartre/ework/blob/main/SECURITY.md">Sécurité</a>
+        <a href="mailto:contact@ewe.works?subject=%5BEWORK-BUG%5D%20v%3F%20%C2%B7%20syst%C3%A8me%20%C2%B7%20&amp;body=Ce%20qui%20s%27est%20pass%C3%A9%20%3A%0A%0APour%20le%20reproduire%20%3A%0A%0A%28Joignez%20vos%20captures%20d%27%C3%A9cran.%20Depuis%20Ework%2C%20R%C3%A9glages%20%E2%80%BA%20Signaler%20un%20probl%C3%A8me%20pr%C3%A9pare%20ce%20mail%20pour%20vous.%29%0A">Signaler un bug</a>
       </nav>
     </footer>
   </body>

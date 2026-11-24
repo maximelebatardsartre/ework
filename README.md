@@ -30,6 +30,7 @@ Ework est le cœur du logo EWE, dessiné et animé entièrement en code. Il marc
 - [Relier votre agent](#relier-votre-agent)
 - [Mises à jour](#mises-à-jour)
 - [Vérifier le fichier téléchargé](#vérifier-le-fichier-téléchargé)
+- [Signaler un problème](#signaler-un-problème)
 - [Confidentialité](#confidentialité)
 - [Licence](#licence)
 
@@ -70,7 +71,7 @@ Pour désinstaller : Paramètres › Applications › Ework › Désinstaller.
 ### Sur Mac (bêta)
 
 > [!IMPORTANT]
-> **La version Mac est en bêta.** Elle a toutes les fonctions de la version Windows, mais elle n'a pas encore été essayée sur assez de Mac. Si quelque chose ne va pas, [signalez-le](https://github.com/maximelebatardsartre/ework/issues/new/choose) : précisez votre version de macOS et votre type de Mac (Apple Silicon ou Intel).
+> **La version Mac est en bêta.** Elle a toutes les fonctions de la version Windows, mais elle n'a pas encore été essayée sur assez de Mac. Si quelque chose ne va pas, signalez-le depuis Ework (**Réglages › Signaler un problème**) ou par mail à contact@ewe.works, avec un objet qui commence par `[EWORK-BUG]` : précisez votre version de macOS et votre type de Mac (Apple Silicon ou Intel).
 
 1. Ouvrez la [dernière version](https://github.com/maximelebatardsartre/ework/releases/latest) et, dans « Assets », téléchargez **`Ework_x.y.z_universal.dmg`**.
 2. Ouvrez-le et glissez **Ework** dans le dossier **Applications**.
@@ -143,6 +144,12 @@ Les installeurs sont compilés uniquement par GitHub Actions, jamais sur un ordi
 3. L'empreinte affichée doit être identique à celle du fichier.
 
 Ework n'est publié **que** sur cette page. Un installeur trouvé ailleurs n'est pas le nôtre.
+
+## Signaler un problème
+
+Dans Ework, **Réglages › Signaler un problème** (ou « Signaler un problème… » dans le menu de l'icône près de l'horloge) : décrivez ce qui ne va pas et ajoutez vos captures d'écran. Ework prépare le mail pour contact@ewe.works, ouvre votre messagerie et le dossier des pièces jointes. Il n'envoie rien lui-même.
+
+Sans Ework sous la main, écrivez à contact@ewe.works avec un objet de la forme `[EWORK-BUG] v0.1.6 · Windows 11 · ce qui ne va pas`.
 
 ## Confidentialité
 

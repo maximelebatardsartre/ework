@@ -22,6 +22,11 @@ Faits clés :
 - [Dernière version (Windows .exe, macOS .dmg)](https://github.com/maximelebatardsartre/ework/releases/latest)
 - [Installation pas à pas](https://github.com/maximelebatardsartre/ework#installer-ework)
 
+## Signaler un problème
+
+- Dans Ework : Réglages › Signaler un problème (mail préparé avec captures d'écran, envoyé depuis la messagerie de la personne).
+- Par mail : contact@ewe.works, objet commençant par `[EWORK-BUG] v<version> · <système> ·`.
+
 ## Optional
 
 - [Licence d'utilisation](https://github.com/maximelebatardsartre/ework/blob/main/LICENCE-UTILISATION.md)
