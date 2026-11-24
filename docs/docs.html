@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Documentation technique — Ework</title>
+    <meta name="description" content="Comment Ework se relie à un agent Hermes : API, flux d'événements, accords, conversations, webhook, fichiers, sécurité et architecture." />
+    <meta name="theme-color" content="#0b1216" />
+    <link rel="icon" href="./assets/favicon-C1S6E5RX.svg" type="image/svg+xml" />
+    <script type="module" crossorigin src="./assets/docs-CCQVUghu.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/menu-LfB9it--.js">
+    <link rel="stylesheet" crossorigin href="./assets/menu-ZyfJ5kZ3.css">
+    <link rel="stylesheet" crossorigin href="./assets/docs-C0jMvYj8.css">
+  </head>
+  <body class="docs">
+    <a class="skip" href="#doc">Aller au contenu</a>
+    <canvas class="aurora" aria-hidden="true"></canvas>
+
+    <header class="nav" data-nav>
+      <a class="brand" href="./" aria-label="Ework, accueil">
+        <svg viewBox="0 0 240 194" aria-hidden="true"><path fill="currentColor" d="M148.3 19.7 121 58.7a1 1 0 0 1-1.7 0L90 20.8a8.4 8.4 0 0 0-12.8-.8L18.5 80.6a9 9 0 0 0 0 12.5l70.4 72.6a43.4 43.4 0 0 0 62.3 0l70.3-72.6a9 9 0 0 0 0-12.5l-60-62a8.4 8.4 0 0 0-13.2 1.1Z" /></svg>
+        <span>Ework</span>
+      </a>
+      <nav class="menu" id="menu" aria-label="Menu principal">
+        <a href="./">Présentation</a>
+        <a href="./docs.html" aria-current="page">Documentation</a>
+        <a class="menu-ewe" href="https://ewe.works" rel="noopener">EWE Works</a>
+        <a class="btn btn-main menu-dl" href="./#telecharger">Télécharger Ework</a>
+      </nav>
+      <a class="btn btn-main btn-sm nav-dl" href="./#telecharger">Télécharger</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu" data-burger><span></span><span></span></button>
+    </header>
+
+    <div class="doc-shell">
+      <aside class="toc" aria-label="Sommaire">
+        <button class="toc-toggle" type="button" aria-expanded="false" aria-controls="toc-list" data-toc-toggle>
+          <span>Sommaire</span><b data-toc-current>Vue d'ensemble</b>
+        </button>
+        <div class="toc-body" id="toc-list">
+          <label class="toc-search"><span class="sr">Filtrer le sommaire</span><input type="search" placeholder="Filtrer…" data-toc-filter /></label>
+          <nav data-toc></nav>
+        </div>
+      </aside>
+
+      <main class="doc" id="doc">
+        <header class="doc-head">
+          <p class="kicker">Documentation technique · Ework <span data-version>0.1</span></p>
+          <h1>Sous le capot d'Ework</h1>
+          <p class="lede">Ework est un client de bureau de l'API d'un agent <a href="https://github.com/NousResearch/hermes-agent" rel="noopener">Hermes</a> (Nous Research). Cette page décrit précisément ce qu'il appelle, ce qu'il écoute, ce qu'il garde et comment il le protège. Elle s'adresse à ceux qui hébergent un agent, l'intègrent ou l'auditent.</p>
+          <div class="pills"><span>Testé avec Hermes 0.23.x</span><span>Tauri 2 · Rust · Svelte 5</span><span>Windows 10+ · macOS 11+</span></div>
+        </header>
+
+        <!-- ===================================================== -->
+        <section id="architecture">
+          <h2>Vue d'ensemble</h2>
+          <p>Ework est une application <strong>Tauri 2</strong> : un cœur en <strong>Rust</strong> et deux fenêtres web (WebView2 sous Windows, WKWebView sous macOS) écrites en <strong>Svelte 5</strong> et TypeScript.</p>
+          <ul>
+            <li><strong>Seul le cœur Rust touche au réseau, aux secrets et aux fichiers.</strong> La politique de sécurité du contenu des fenêtres n'autorise que le canal interne de Tauri (<code>connect-src ipc: http://ipc.localhost</code>) : l'interface ne peut joindre aucun serveur, même compromise.</li>
+            <li><strong>La fenêtre compagnon</strong> est transparente, toujours au premier plan et traversée par les clics, sauf au-dessus d'Ework. Elle dessine le personnage et sa bulle.</li>
+            <li><strong>La fenêtre principale</strong> réunit Conversation, Missions, Fichiers, Progression, Apparence et Réglages.</li>
+            <li>Le cœur parle à l'agent, transforme son flux d'événements en un état de mission, et l'envoie aux deux fenêtres par des événements Tauri (<code>mission-update</code>, <code>agent-event</code>).</li>
+          </ul>
+          <figure class="diagram" aria-label="Architecture : les fenêtres, le cœur Rust, l'agent">
+            <div class="d-col">
+              <div class="d-box"><b>Fenêtre compagnon</b><span>personnage, bulle, cerveau</span></div>
+              <div class="d-box"><b>Fenêtre principale</b><span>conversation, missions, fichiers</span></div>
+            </div>
+            <div class="d-link"><span>IPC Tauri</span><i></i></div>
+            <div class="d-box d-core"><b>Cœur Rust</b><span>client HTTP · flux SSE · trousseau · webhook · mises à jour</span></div>
+            <div class="d-link"><span>HTTPS ou HTTP privé</span><i></i></div>
+            <div class="d-col">
+              <div class="d-box"><b>API de l'agent</b><span>port 8642 · /v1/runs · /api/*</span></div>
+              <div class="d-box"><b>Tableau de bord</b><span>port 9119 · /api/files</span></div>
+            </div>
+          </figure>
+        </section>
+
+        <section id="prerequis">
+          <h2>Prérequis côté agent</h2>
+          <p>Ework parle à l'<strong>API server</strong> de Hermes, désactivé par défaut. Dans <code>~/.hermes/.env</code> de l'agent :</p>
+          <pre><code><span class="k">API_SERVER_ENABLED</span>=true
+<span class="k">API_SERVER_KEY</span>=<span class="s">&lt;une longue clé aléatoire&gt;</span></code></pre>
+          <p>Le port par défaut est <code>8642</code>. Ework vérifie ensuite que le serveur annonce les capacités dont il a besoin : <code>run_submission</code>, <code>run_status</code>, <code>run_events_sse</code>, <code>run_stop</code> et <code>run_approval_response</code> (ou son ancien nom <code>run_approval</code>).</p>
+        </section>
+
+        <section id="relier">
+          <h2>Relier Ework : <code>ework://connect</code></h2>
+          <p>Le plus simple est de demander à l'agent de se régler lui-même et de répondre par une ligne. Ework la retrouve n'importe où dans le texte collé, sans tenir compte de la casse :</p>
+          <pre><code><span class="u">ework://connect?url=</span><span class="s">https://agent.exemple.fr</span><span class="u">&amp;key=</span><span class="s">sk-…</span></code></pre>
+          <div class="table">
+            <table>
+              <thead><tr><th>Paramètre</th><th>Alias</th><th>Rôle</th></tr></thead>
+              <tbody>
+                <tr><td><code>url</code></td><td><code>address</code>, <code>adresse</code></td><td>Adresse de l'API. Sans schéma : HTTP pour un hôte privé, HTTPS sinon.</td></tr>
+                <tr><td><code>key</code></td><td><code>cle</code></td><td>La valeur de <code>API_SERVER_KEY</code>. Un préfixe <code>Bearer </code> est retiré.</td></tr>
+                <tr><td><code>port</code></td><td></td><td>Port, si l'adresse n'en donne pas (8642 par défaut).</td></tr>
+                <tr><td><code>profile</code></td><td><code>profil</code></td><td>Profil Hermes, servi sous <code>/p/&lt;profil&gt;/</code>.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Les valeurs sont décodées (<code>%xx</code>, <code>&amp;amp;</code>). Sans ligne <code>ework://</code>, Ework lit aussi des lignes étiquetées (« Adresse : … », « Clé : … ») ou des variables <code>.env</code>. <strong>La clé part aussitôt dans le trousseau du système</strong> : elle n'est jamais écrite dans un fichier ni montrée à l'interface.</p>
+
+          <h3 id="adresses">Règles d'adresse et transport</h3>
+          <ul>
+            <li>Seuls <code>http</code> et <code>https</code> sont acceptés. Une adresse avec identifiants (<code>user@</code>), requête ou fragment est refusée.</li>
+            <li><strong>HTTP n'est permis que vers un réseau privé</strong> : boucle locale, <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>, <code>100.64.0.0/10</code> (Tailscale et CGNAT), et leurs formes IPv6 mappées. Une IP publique en HTTP est refusée d'emblée.</li>
+            <li><strong>Garde DNS</strong> : pour un nom en HTTP, un résolveur dédié résout le nom à chaque connexion, refuse si une seule adresse est publique, et ne se connecte qu'aux adresses vérifiées. Un nom qui changerait de cible entre deux requêtes ne peut pas faire fuir la clé.</li>
+            <li>Aucune redirection n'est suivie, aucun proxy n'est utilisé. Connexion en 8 s au plus, requête en 20 s.</li>
+            <li>L'authentification est <code>Authorization: Bearer &lt;clé&gt;</code>, posée seulement sur les requêtes qui en ont besoin : <code>/health</code> est appelé sans clé.</li>
+          </ul>
+
+          <h3 id="test">Le test de connexion</h3>
+          <ol class="steps-list">
+            <li><code>GET /health</code> sans clé : un serveur répond-il, et est-ce bien Hermes ?</li>
+            <li><code>GET /v1/capabilities</code> avec la clé : la clé est-elle acceptée, les capacités sont-elles là ?</li>
+            <li><code>GET /v1/models</code> : le modèle de l'agent, pour l'affichage.</li>
+          </ol>
+          <p>Chaque étape a sa durée et son code de réponse, visibles dans <em>Réglages › Agent › Journal de connexion</em>.</p>
+        </section>
+
+        <section id="mission">
+          <h2>Cycle d'une mission</h2>
+          <p>Une mission est un <em>run</em> Hermes. Ework le crée, suit son flux d'événements et interroge son état quand le flux se tait.</p>
+          <div class="seq" aria-label="Séquence d'une mission">
+            <div class="seq-row"><span class="who">Ework</span><code>POST /v1/runs</code><span class="what">{ input, session_id } · Idempotency-Key</span></div>
+            <div class="seq-row back"><span class="who">Agent</span><code>202</code><span class="what">{ run_id }</span></div>
+            <div class="seq-row"><span class="who">Ework</span><code>GET /v1/runs/{id}/events</code><span class="what">Accept: text/event-stream</span></div>
+            <div class="seq-row back"><span class="who">Agent</span><code>tool.started · message.delta · …</code><span class="what">flux SSE, ping toutes les 10 s</span></div>
+            <div class="seq-row"><span class="who">Ework</span><code>GET /v1/runs/{id}</code><span class="what">après 12 s sans événement</span></div>
+            <div class="seq-row back"><span class="who">Agent</span><code>run.completed</code><span class="what">fin du flux</span></div>
+          </div>
+          <ul>
+            <li>Le corps est <code>{"input": "…", "session_id": "…"}</code>. L'en-tête <code>Idempotency-Key</code> (un identifiant <code>run-…</code> unique) évite qu'une mission parte deux fois si la requête est rejouée.</li>
+            <li>À la reprise du flux, Ework envoie <code>Last-Event-ID</code> : rien n'est perdu ni rejoué.</li>
+            <li>Si le serveur n'a pas de flux d'événements (404), Ework se rabat sur l'état du run, interrogé toutes les 2 s.</li>
+          </ul>
+
+          <h3 id="etats-mission">États d'une mission</h3>
+          <div class="table">
+            <table>
+              <thead><tr><th>État</th><th>Signification</th></tr></thead>
+              <tbody>
+                <tr><td><code>idle</code></td><td>Aucune mission.</td></tr>
+                <tr><td><code>sending</code></td><td>La requête de création est partie, sans réponse encore.</td></tr>
+                <tr><td><code>running</code></td><td>L'agent travaille.</td></tr>
+                <tr><td><code>waiting</code></td><td>Il attend un accord ou une réponse.</td></tr>
+                <tr><td><code>done</code></td><td>Terminée (<code>completed</code>).</td></tr>
+                <tr><td><code>failed</code></td><td>L'agent a échoué (<code>failed</code>).</td></tr>
+                <tr><td><code>cancelled</code></td><td>Arrêtée ou interrompue (<code>cancelled</code>, <code>interrupted</code>).</td></tr>
+                <tr><td><code>error</code></td><td>Ework n'a pas pu la mener : réseau, clé, réponse illisible.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 id="resilience">Résilience du lien</h3>
+          <div class="table">
+            <table>
+              <thead><tr><th>Réglage</th><th>Valeur</th></tr></thead>
+              <tbody>
+                <tr><td>Flux jugé mort sans aucun octet</td><td>45 s</td></tr>
+                <tr><td>État du run demandé sans événement réel</td><td>12 s</td></tr>
+                <tr><td>Reconnexions</td><td>1, 2, 4, 8, 15, puis 30 s</td></tr>
+                <tr><td>Abandon</td><td>après 20 échecs de suite</td></tr>
+                <tr><td>Délai laissé au serveur pour confirmer un arrêt</td><td>10 s</td></tr>
+                <tr><td>Longueur maximale d'une ligne SSE</td><td>4 Mio</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Pendant une coupure, Ework montre l'état <code>offline</code> et une ligne « L'agent ne répond plus, nouvel essai… ». Arrêter une mission envoie <code>POST /v1/runs/{id}/stop</code>.</p>
+        </section>
+
+        <section id="evenements">
+          <h2>Événements écoutés</h2>
+          <p>Le flux SSE de Hermes envoie des événements nommés. Ework connaît ceux-ci ; un événement inconnu est gardé dans le journal sans rien casser.</p>
+          <div class="table">
+            <table>
+              <thead><tr><th>Événement</th><th>Ce qu'en fait Ework</th></tr></thead>
+              <tbody>
+                <tr><td><code>message.delta</code>, <code>assistant.delta</code></td><td>Ajoute le texte à la réponse, Ework rédige.</td></tr>
+                <tr><td><code>message.interim</code>, <code>assistant.commentary</code></td><td>Texte d'étape, montré comme ce que fait l'agent.</td></tr>
+                <tr><td><code>tool.started</code></td><td>Nouvelle étape ; le cerveau choisit le geste d'après l'outil.</td></tr>
+                <tr><td><code>tool.completed</code>, <code>tool.failed</code></td><td>Ferme l'étape avec sa durée.</td></tr>
+                <tr><td><code>subagent.start</code>, <code>subagent.complete</code></td><td>Ework délègue.</td></tr>
+                <tr><td><code>approval.request</code></td><td>Demande d'accord : voir <a href="#accords">Accords et questions</a>.</td></tr>
+                <tr><td><code>run.steered</code></td><td>La mission a été réorientée ; Ework le montre.</td></tr>
+                <tr><td><code>run.completed</code></td><td>Mission terminée, Ework fête ça.</td></tr>
+                <tr><td><code>run.failed</code></td><td>Échec, Ework s'excuse et donne la raison.</td></tr>
+                <tr><td><code>run.cancelled</code>, <code>run.interrupted</code></td><td>Mission arrêtée.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Ework produit aussi ses propres événements pour le personnage : <code>run.started</code>, <code>control.pending</code>, <code>control.resolved</code>, <code>link.down</code>, <code>link.up</code> et <code>background</code>.</p>
+        </section>
+
+        <section id="accords">
+          <h2>Accords et questions</h2>
+          <p>Avant une action sensible, Hermes suspend le run et attend une réponse. Ework reconnaît les deux formes que renvoie Hermes 0.23 dans <code>GET /v1/runs/{id}</code> :</p>
+          <ul>
+            <li><strong><code>pending_controls</code></strong> (liste ou objet) : chaque demande porte un <code>prompt_id</code>, un genre (<code>approval</code> ou <code>clarify</code>) et l'<code>execution_generation</code> du run.</li>
+            <li><strong><code>status: "waiting_for_approval"</code></strong> avec un objet <code>approval</code> : la demande peut alors n'avoir aucun identifiant. Ework lui en donne un, <code>unnamed:&lt;horodatage&gt;#&lt;tour&gt;</code>, et distingue chaque demande de la suivante par tour : un tour commence quand une demande a reçu sa réponse et que le run repart.</li>
+          </ul>
+          <p>Quand l'état ne dit pas ce qui est demandé, Ework reprend le texte de l'événement <code>approval.request</code> : la commande, ou sa description.</p>
+          <pre><code><span class="c"># accorder (une fois) ou refuser</span>
+<span class="f">POST</span> /v1/runs/{id}/approval
+{ <span class="s">"request_id"</span>: <span class="s">"p-7"</span>, <span class="s">"execution_generation"</span>: 3, <span class="s">"choice"</span>: <span class="s">"once"</span> }   <span class="c"># ou "deny"</span>
+{ <span class="s">"choice"</span>: <span class="s">"once"</span> }   <span class="c"># quand le serveur n'a nommé aucune demande</span>
+
+<span class="c"># répondre à une question</span>
+<span class="f">POST</span> /v1/runs/{id}/clarify
+{ <span class="s">"request_id"</span>: <span class="s">"p-8"</span>, <span class="s">"execution_generation"</span>: 3, <span class="s">"answer"</span>: <span class="s">"Le dossier Devis"</span> }</code></pre>
+          <p class="callout"><b>Jamais sans vous.</b> La bulle d'Ework s'ouvre d'elle-même avec la demande et ses boutons. Si Ework est caché (plein écran, heures calmes, pause), <strong>une notification du système</strong> donne le sujet de la demande, ses secrets masqués, et la bulle se rouvre au retour d'Ework.</p>
+        </section>
+
+        <section id="conversations">
+          <h2>Conversations</h2>
+          <ul>
+            <li>Une conversation est une <strong>session Hermes</strong>. Ework envoie son identifiant dans <code>session_id</code> ; il en crée un, <code>ework-&lt;nanosecondes&gt;-&lt;n&gt;-&lt;pid&gt;</code>, et adopte celui que le serveur renvoie s'il en nomme un. L'identifiant est oublié quand on change d'agent.</li>
+            <li>La liste des conversations vient de l'agent : <code>GET /api/sessions?limit=&amp;offset=</code>, par pages de 50. Les sessions des tâches planifiées, masquées ou archivées n'y figurent pas. Les conversations venues de Telegram ou du terminal se lisent depuis Ework.</li>
+            <li>Lire une conversation : <code>GET /api/sessions/{id}/messages</code>. La supprimer : <code>DELETE /api/sessions/{id}</code>, puis Ework l'oublie de son côté.</li>
+          </ul>
+          <h3 id="historique">L'historique local</h3>
+          <p>Ework garde un résumé des missions dans <code>history.json</code> : au plus 100 conversations, 80 missions par conversation, 4 000 caractères par demande, 40 000 par réponse et 80 étapes par mission. L'écriture passe par un fichier temporaire renommé ensuite : un arrêt brutal ne le corrompt pas.</p>
+          <p><strong>Masquage avant écriture</strong>, dans la demande, la réponse et chaque étape : la clé d'<code>ework://connect</code>, le mot de passe d'<code>ework://files</code>, toute variable dont le nom est ou finit par <code>KEY</code>, <code>APIKEY</code>, <code>PASSWORD</code>, <code>PASSWD</code>, <code>PWD</code>, <code>SECRET</code> ou <code>TOKEN</code>, un « Mot de passe : … » même en Markdown, et les jetons <code>Bearer …</code>. Chaque valeur devient <code>•••</code>.</p>
+        </section>
+
+        <section id="cerveau">
+          <h2>Le cerveau : des événements aux gestes</h2>
+          <p>Le cerveau (<code>src/agent/brain.ts</code>, sans DOM, testé) reçoit les événements et répond par un état d'animation et une clé de texte, jamais par une phrase écrite en dur. Les outils sont classés par nom ; le préfixe <code>mcp__</code> des outils MCP est retiré, et la première règle qui correspond l'emporte :</p>
+          <div class="table">
+            <table>
+              <thead><tr><th>Nom de l'outil</th><th>Geste</th></tr></thead>
+              <tbody>
+                <tr><td><code>clarify</code></td><td>clarify</td></tr>
+                <tr><td><code>delegate_task</code>, <code>*subagent*</code></td><td>delegate</td></tr>
+                <tr><td><code>*search*</code>, <code>browser_*</code>, <code>computer_use</code>, <code>vision_analyze</code></td><td>search</td></tr>
+                <tr><td><code>read_*</code>, <code>*_read</code>, <code>web_extract</code>, <code>list_*</code>, <code>get_*</code></td><td>read</td></tr>
+                <tr><td><code>write_file</code>, <code>patch</code>, <code>create_*</code>, <code>*upload*</code></td><td>file</td></tr>
+                <tr><td><code>terminal</code>, <code>process_manage</code>, <code>execute_code</code>, <code>run_*</code></td><td>execute</td></tr>
+                <tr><td><code>todo*</code>, <code>memory</code>, <code>kanban_*</code>, <code>*note*</code></td><td>note</td></tr>
+                <tr><td><code>cronjob</code>, <code>*schedule*</code></td><td>wait</td></tr>
+                <tr><td><code>*send*</code>, <code>*mail*</code>, <code>*message*</code>, <code>notify</code></td><td>send</td></tr>
+                <tr><td>tout autre outil</td><td>connect</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Une lecture ou une exécution qui touche des données chiffrées (<code>.csv</code>, <code>.xlsx</code>, pandas, graphiques…) devient <code>analyse</code>. Les priorités, de la plus forte à la plus faible : hors ligne, réactions ponctuelles, demande en attente, résultat (fini ou échec), puis le travail en cours (outil, rédaction, dernier outil, délégation, réflexion), puis l'activité de fond. <strong>La souris et le bureau passent toujours avant le cerveau</strong>, et le cerveau avant la vie autonome.</p>
+          <p>Le moteur d'animation joue plus de 70 états, chacun écrit en temps : élan, action, suite, stabilisation, avec entrée, boucle, variantes et sortie, sur des couches vivantes (respiration, clignements, regard qui suit la souris).</p>
+        </section>
+
+        <section id="fond">
+          <h2>Tâches planifiées et activité de fond</h2>
+          <ul>
+            <li><strong>Tâches planifiées</strong> (si activé) : toutes les 60 s, <code>GET /api/jobs</code>. Quand une tâche vient de tourner, Ework lit <code>/api/sessions?source=cron&amp;limit=40</code> puis les messages de la session pour montrer ce qu'elle a répondu. Les actions sur une tâche passent par <code>POST /api/jobs/{id}/{action}</code>.</li>
+            <li><strong>Activité de fond</strong> (si activé) : toutes les 60 s, <code>GET /health/detailed</code> donne le nombre de runs actifs lancés par d'autres interfaces ; Ework le montre sobrement.</li>
+          </ul>
+        </section>
+
+        <section id="webhook">
+          <h2>Le webhook d'Ework</h2>
+          <p>Un script de l'agent peut prévenir Ework quand il le décide. Ework ouvre alors une petite porte HTTP sur l'ordinateur ; il <strong>n'exécute, n'ouvre et ne transmet jamais</strong> rien de ce qu'il reçoit : il l'affiche.</p>
+          <pre><code><span class="f">curl</span> -sS -X POST http://&lt;cet-ordinateur&gt;:47800/notice \
+  -H <span class="s">"Authorization: Bearer $EWORK_TOKEN"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{"title":"Sauvegarde","text":"Terminée en 42 s","level":"info"}'</span></code></pre>
+          <div class="table">
+            <table>
+              <thead><tr><th>Point</th><th>Valeur</th></tr></thead>
+              <tbody>
+                <tr><td>Route</td><td><code>POST /notice</code> seulement (sinon 404 ou 405)</td></tr>
+                <tr><td>Port par défaut</td><td><code>47800</code></td></tr>
+                <tr><td>Jeton</td><td>32 octets aléatoires en hexadécimal, rangés dans le trousseau, comparés en temps constant (sinon 401)</td></tr>
+                <tr><td>Écoute</td><td><code>127.0.0.1</code> ; <code>0.0.0.0</code> si « réseau privé » est activé. Pair public refusé (403).</td></tr>
+                <tr><td>Tailles</td><td>en-têtes 8 Kio, corps 16 Kio (413), <code>Content-Length</code> exigé</td></tr>
+                <tr><td>Débit</td><td>12 connexions ouvertes, 30 messages par minute, 8 s par connexion</td></tr>
+                <tr><td>Champs</td><td><code>title</code> (ou <code>subject</code>, <code>name</code>) 120 car. · <code>text</code> (ou <code>message</code>, <code>body</code>, <code>content</code>) 4 000 car. · <code>level</code> (ou <code>status</code>) ; du texte brut est aussi accepté</td></tr>
+                <tr><td>Conservation</td><td>les 50 derniers messages, dans <code>news.json</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Depuis un serveur distant, le plus simple est <strong>Tailscale</strong> sur le serveur et sur l'ordinateur : l'adresse de l'ordinateur commence alors par <code>100.</code> et reste privée. Ework copie lui-même la commande et une demande prête à coller pour l'agent.</p>
+        </section>
+
+        <section id="fichiers">
+          <h2>Fichiers de l'agent</h2>
+          <p>L'API de Hermes ne sert pas de fichiers : Ework passe par le <strong>tableau de bord</strong> de Hermes (<code>hermes dashboard</code>, port <code>9119</code> par défaut), protégé par un identifiant et un mot de passe.</p>
+          <div class="table">
+            <table>
+              <thead><tr><th>Appel</th><th>Rôle</th></tr></thead>
+              <tbody>
+                <tr><td><code>GET /api/health</code>, <code>GET /api/auth/providers</code></td><td>Le tableau de bord répond-il, quel fournisseur accepte un mot de passe ?</td></tr>
+                <tr><td><code>POST /auth/password-login</code></td><td><code>{provider, username, password, next}</code>, ouvre une session</td></tr>
+                <tr><td><code>GET /api/auth/me</code></td><td>Le compte relié</td></tr>
+                <tr><td><code>GET /api/files?path=</code></td><td>Contenu d'un dossier</td></tr>
+                <tr><td><code>GET /api/files/download</code></td><td>Lire ou télécharger un fichier</td></tr>
+                <tr><td><code>POST /api/files/upload-stream</code></td><td>Déposer un fichier (multipart)</td></tr>
+                <tr><td><code>POST /api/files/mkdir</code>, <code>DELETE /api/files</code></td><td>Créer un dossier, supprimer</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul>
+            <li>Seuls les cookies <code>hermes_session*</code> sont gardés, <strong>en mémoire</strong>, et envoyés marqués sensibles. Une session expirée est rouverte une fois, d'elle-même.</li>
+            <li><strong>La connexion est vérifiée avant d'être enregistrée</strong> : un mauvais mot de passe ne remplace jamais une liaison qui marche, et le mot de passe gardé ne sert qu'à l'adresse pour laquelle il a été donné.</li>
+            <li>Limites : 200 Mio par téléchargement, 1 Mio pour lire un texte dans la fenêtre, 100 Mio par dépôt. Les chemins qui remontent (<code>..</code>) sont refusés.</li>
+            <li><strong>Ouvrir</strong> n'est permis que pour les documents, images, sons et vidéos courants (pdf, docx, xlsx, md, csv, png, jpg, mp4…). Tout le reste se télécharge. Sous Windows, le fichier reçoit la marque « venu d'Internet » (<code>Zone.Identifier</code>) : Office l'ouvre en mode protégé.</li>
+          </ul>
+          <p>L'agent peut aussi donner l'accès d'une ligne : <code>ework://files?url=…&amp;user=…&amp;password=…</code>. Ework la lit à la fin de la mission, avant de masquer le mot de passe dans l'historique, et propose « Relier les fichiers » en un clic.</p>
+        </section>
+
+        <section id="securite">
+          <h2>Sécurité et vie privée</h2>
+          <h3 id="secrets">Secrets</h3>
+          <p>Tous les secrets vont dans le <strong>trousseau du système</strong> (Gestionnaire d'identification Windows, Trousseau macOS), sous le service <code>works.ewe.ework</code> :</p>
+          <div class="table">
+            <table>
+              <thead><tr><th>Compte</th><th>Contenu</th></tr></thead>
+              <tbody>
+                <tr><td><code>agent-api-key</code></td><td>La clé de l'API de l'agent</td></tr>
+                <tr><td><code>files-password</code></td><td>Le mot de passe du tableau de bord</td></tr>
+                <tr><td><code>news-door</code></td><td>Le jeton du webhook</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>En Rust, un secret est un type qui ne s'affiche jamais : ni dans un journal, ni dans une erreur. Le journal de connexion (300 lignes de 700 caractères, en mémoire seulement) retire la clé, puis applique le même masquage que l'historique.</p>
+
+          <h3 id="donnees">Ce qui est écrit sur l'ordinateur</h3>
+          <p>Dans le dossier de configuration de l'application : <code>settings.json</code> (réglages, apparence), <code>history.json</code> (missions), <code>progress.json</code> (compteurs, badges), <code>news.json</code> (messages du webhook). Aucun secret n'y figure. <strong>Aucun compte, aucune télémétrie</strong> : Ework ne contacte que l'agent indiqué et l'adresse des mises à jour.</p>
+
+          <h3 id="maj">Mises à jour signées</h3>
+          <p>Au lancement, puis toutes les 6 heures, Ework lit <code>latest.json</code> de la dernière version publiée sur GitHub, en HTTPS. Chaque paquet est signé (minisign) et vérifié contre la clé publique intégrée à l'application avant d'être installé. Jamais pendant une application en plein écran.</p>
+
+          <h3 id="observation">Ce qu'Ework regarde, et jamais</h3>
+          <ul>
+            <li>Le programme au premier plan, votre présence (inactif après 120 s), qu'un son joue, qu'une copie a eu lieu. <strong>Jamais le contenu du presse-papiers</strong> : seul son numéro de séquence change.</li>
+            <li>Aucune frappe gardée ; l'écoute facultative ne reconnaît que sept raccourcis. Aucune capture d'écran.</li>
+            <li>Les titres de fenêtres et de morceaux seulement si vous l'autorisez ; un programme exclu n'est même pas nommé.</li>
+            <li>Lire le texte d'une fenêtre est désactivé au départ, seulement à votre demande, programme par programme, par l'accessibilité du système. Jamais les gestionnaires de mots de passe, la navigation privée ou un champ de mot de passe. 6 000 caractères au plus, montrés avant tout envoi, jamais gardés.</li>
+          </ul>
+        </section>
+
+        <section id="bureau">
+          <h2>Sur le bureau</h2>
+          <ul>
+            <li><strong>Bords des fenêtres</strong> : deux fois par seconde, le cœur relève le bord supérieur des fenêtres visibles de l'écran d'Ework, moins les parties cachées par les fenêtres de devant. Ework y marche, y saute et s'y assoit.</li>
+            <li><strong>Clics traversants</strong> : la fenêtre ignore la souris sauf au-dessus d'Ework. Le curseur est lu toutes les 33 ms ; la zone qui prend les clics suit le personnage.</li>
+            <li><strong>Discrétion</strong> : en plein écran (état de notification du système, plus une fenêtre qui couvre l'écran), aux heures calmes ou quand un programme choisi tourne, Ework se cache ou passe sur l'autre écran, et quitte le premier plan.</li>
+            <li><strong>Plusieurs écrans</strong> : l'écran choisi est retenu par son nom, sinon l'écran principal ; la scène est sa zone de travail, sans la barre des tâches.</li>
+          </ul>
+        </section>
+
+        <section id="pile">
+          <h2>Pile technique</h2>
+          <div class="table">
+            <table>
+              <thead><tr><th>Couche</th><th>Choix</th></tr></thead>
+              <tbody>
+                <tr><td>Application</td><td>Tauri 2, Rust édition 2024 ; profil de publication LTO, <code>opt-level = "s"</code>, symboles retirés</td></tr>
+                <tr><td>Réseau</td><td>reqwest 0.13 (TLS du système), tokio, résolveur DNS gardé</td></tr>
+                <tr><td>Secrets</td><td>keyring 3, natif Windows et Apple</td></tr>
+                <tr><td>Interface</td><td>Svelte 5, TypeScript 6, Vite 8</td></tr>
+                <tr><td>Animation</td><td>Moteur maison en SVG : poses évaluées image par image, couches vivantes, objets et effets</td></tr>
+                <tr><td>Greffons Tauri</td><td>updater, single-instance, opener, dialog, autostart, global-shortcut, notification</td></tr>
+                <tr><td>Systèmes</td><td>Windows 10 et 11 (64 bits, installation par utilisateur), macOS 11 et plus (universel, bêta)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="reference">
+          <h2>Référence des appels</h2>
+          <p>Tous les appels qu'Ework fait à l'agent, et rien d'autre.</p>
+          <div class="table">
+            <table>
+              <thead><tr><th>Méthode</th><th>Chemin</th><th>Usage</th></tr></thead>
+              <tbody>
+                <tr><td>GET</td><td><code>/health</code></td><td>Sonde, sans clé</td></tr>
+                <tr><td>GET</td><td><code>/health/detailed</code></td><td>Runs de fond actifs</td></tr>
+                <tr><td>GET</td><td><code>/v1/capabilities</code></td><td>Clé et capacités</td></tr>
+                <tr><td>GET</td><td><code>/v1/models</code></td><td>Modèle</td></tr>
+                <tr><td>POST</td><td><code>/v1/runs</code></td><td>Lancer une mission</td></tr>
+                <tr><td>GET</td><td><code>/v1/runs/{id}</code></td><td>État du run</td></tr>
+                <tr><td>GET</td><td><code>/v1/runs/{id}/events</code></td><td>Flux SSE</td></tr>
+                <tr><td>POST</td><td><code>/v1/runs/{id}/stop</code></td><td>Arrêter</td></tr>
+                <tr><td>POST</td><td><code>/v1/runs/{id}/approval</code></td><td>Accorder ou refuser</td></tr>
+                <tr><td>POST</td><td><code>/v1/runs/{id}/clarify</code></td><td>Répondre à une question</td></tr>
+                <tr><td>GET</td><td><code>/api/sessions</code></td><td>Conversations</td></tr>
+                <tr><td>GET</td><td><code>/api/sessions/{id}/messages</code></td><td>Lire une conversation</td></tr>
+                <tr><td>DELETE</td><td><code>/api/sessions/{id}</code></td><td>Supprimer une conversation</td></tr>
+                <tr><td>GET</td><td><code>/api/jobs</code></td><td>Tâches planifiées</td></tr>
+                <tr><td>POST</td><td><code>/api/jobs/{id}/{action}</code></td><td>Agir sur une tâche</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="doc-ewe" data-spot>
+          <p class="kicker">Ne rien programmer vous-même</p>
+          <h2><strong>EWE Works</strong> conçoit votre agent, le programme et le relie à Ework.</h2>
+          <p>De l'agent à ses outils et ses accès à vos logiciels : nous nous occupons de tout.</p>
+          <a class="btn btn-main btn-lg" href="https://ewe.works" rel="noopener"><span><b>Découvrir EWE Works</b><small>ewe.works</small></span></a>
+        </aside>
+      </main>
+    </div>
+
+    <footer class="foot">
+      <div class="foot-brand">
+        <svg viewBox="0 0 240 194" aria-hidden="true"><path fill="currentColor" d="M148.3 19.7 121 58.7a1 1 0 0 1-1.7 0L90 20.8a8.4 8.4 0 0 0-12.8-.8L18.5 80.6a9 9 0 0 0 0 12.5l70.4 72.6a43.4 43.4 0 0 0 62.3 0l70.3-72.6a9 9 0 0 0 0-12.5l-60-62a8.4 8.4 0 0 0-13.2 1.1Z" /></svg>
+        <p><b>Ework</b> · un projet <a href="https://ewe.works" rel="noopener">EWE Works</a><br />Développé par eSpri Studio. Tous droits réservés.</p>
+      </div>
+      <nav aria-label="Liens">
+        <a href="./">Présentation</a>
+        <a href="https://github.com/maximelebatardsartre/ework">GitHub</a>
+        <a href="https://github.com/maximelebatardsartre/ework/blob/main/LICENCE-UTILISATION.md">Licence d'utilisation</a>
+        <a href="https://github.com/maximelebatardsartre/ework/blob/main/CONFIDENTIALITE.md">Confidentialité</a>
+        <a href="https://github.com/maximelebatardsartre/ework/blob/main/SECURITY.md">Sécurité</a>
+      </nav>
+    </footer>
+  </body>
+</html>

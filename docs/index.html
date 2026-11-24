@@ -4,14 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Ework — le visage de votre agent IA</title>
-    <meta name="description" content="Ework vit sur votre bureau et vous montre, en temps réel, ce que fait votre agent Hermes. Gratuit pour Windows et macOS. Conçu par EWE Works." />
+    <meta name="description" content="Ework vit sur votre bureau et vous montre, en temps réel, ce que fait votre agent IA. Gratuit pour Windows et macOS. Conçu par EWE Works." />
     <meta name="theme-color" content="#0b1216" />
     <meta property="og:title" content="Ework — le visage de votre agent IA" />
     <meta property="og:description" content="Un compagnon de bureau animé qui montre ce que fait votre agent. Gratuit, sans compte, sans télémétrie." />
     <meta property="og:type" content="website" />
     <link rel="icon" href="./assets/favicon-C1S6E5RX.svg" type="image/svg+xml" />
-    <script type="module" crossorigin src="./assets/index-BfQCT29g.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-VxYZJWLe.css">
+    <script type="module" crossorigin src="./assets/index-DyC2RIBK.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/menu-LfB9it--.js">
+    <link rel="stylesheet" crossorigin href="./assets/menu-ZyfJ5kZ3.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-Bt3AXyQ_.css">
   </head>
   <body>
     <a class="skip" href="#contenu">Aller au contenu</a>
@@ -23,14 +25,14 @@
         <svg viewBox="0 0 240 194" aria-hidden="true"><path fill="currentColor" d="M148.3 19.7 121 58.7a1 1 0 0 1-1.7 0L90 20.8a8.4 8.4 0 0 0-12.8-.8L18.5 80.6a9 9 0 0 0 0 12.5l70.4 72.6a43.4 43.4 0 0 0 62.3 0l70.3-72.6a9 9 0 0 0 0-12.5l-60-62a8.4 8.4 0 0 0-13.2 1.1Z" /></svg>
         <span>Ework</span>
       </a>
-      <nav aria-label="Sections">
-        <a href="#agent">L'agent</a>
-        <a href="#etats">Animations</a>
-        <a href="#apparence">Apparence</a>
-        <a href="#technologie">Technologie</a>
-        <a href="#developpeurs">Développeurs</a>
+      <nav class="menu" id="menu" aria-label="Menu principal">
+        <a href="./" aria-current="page">Présentation</a>
+        <a href="./docs.html">Documentation</a>
+        <a class="menu-ewe" href="https://ewe.works" rel="noopener">EWE Works</a>
+        <a class="btn btn-main menu-dl" href="#telecharger">Télécharger Ework</a>
       </nav>
-      <a class="btn btn-main btn-sm" href="#telecharger" data-magnet>Télécharger</a>
+      <a class="btn btn-main btn-sm nav-dl" href="#telecharger" data-magnet>Télécharger</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu" data-burger><span></span><span></span></button>
     </header>
 
     <main id="contenu">
@@ -42,7 +44,7 @@
             <span class="line">Votre agent IA</span>
             <span class="line">a enfin <span class="shine">un visage.</span></span>
           </h1>
-          <p class="lede reveal">Ework vit sur votre bureau, marche sur le bord de vos fenêtres et vous montre, en temps réel, ce que fait votre agent Hermes. Vous lui parlez, vous lui confiez des missions, vous le voyez travailler.</p>
+          <p class="lede reveal">Ework vit sur votre bureau, marche sur le bord de vos fenêtres et vous montre, en temps réel, ce que fait votre agent IA. Vous lui parlez, vous lui confiez des missions, vous le voyez travailler.</p>
           <div class="ctas reveal">
             <a class="btn btn-main btn-lg" data-dl="main" data-magnet href="https://github.com/maximelebatardsartre/ework/releases/latest">
               <span class="os-ico" data-os-ico></span>
@@ -63,7 +65,7 @@
         <div class="desk reveal" data-desk aria-label="Ework sur un bureau : il marche sur une fenêtre pendant que l'agent travaille">
           <div class="win win-doc" data-tilt>
             <div class="win-bar"><i></i><i></i><i></i><span>rapport-cuivre.md</span></div>
-            <div class="win-body doc" data-doc>
+            <div class="win-body paper" data-doc>
               <p class="h">Le cuivre cette semaine</p>
               <p class="l w90"></p><p class="l w75"></p><p class="l w85"></p>
               <div class="chart"><span style="--h:38%"></span><span style="--h:52%"></span><span style="--h:46%"></span><span style="--h:64%"></span><span style="--h:58%"></span><span style="--h:77%"></span><span style="--h:88%"></span></div>
@@ -222,15 +224,16 @@
         <div class="tech-copy">
           <header class="section-head left reveal">
             <p class="kicker">La technologie EWE Works</p>
-            <h2>Gratuit pour tous.<br />Pensé pour vos agents.</h2>
-            <p>Ework se relie à n'importe quel agent Hermes : sur votre ordinateur, votre réseau ou un serveur. Nous le mettons à disposition de tout le monde, gratuitement. Et il est né pour être le visage des agents qu'EWE Works conçoit sur mesure, adaptés à votre métier et à vos outils.</p>
+            <h2>Gratuit pour tous.<br /><span class="shine">Taillé pour vos agents.</span></h2>
+            <p><strong>Ework est offert à tout le monde</strong> : il se relie à votre agent IA, sur votre ordinateur, votre réseau ou un serveur.</p>
+            <p>Il est né chez <strong class="ewe">EWE Works</strong>, pour être le visage des agents que nous concevons sur mesure. <strong>EWE Works s'occupe de tout programmer</strong> : l'agent, ses outils, ses accès à vos logiciels, et Ework qui vous le montre au travail.</p>
           </header>
           <div class="ctas reveal">
-            <a class="btn btn-main" href="https://ewe.works" data-magnet rel="noopener">Découvrir EWE Works</a>
-            <a class="btn btn-ghost" href="https://ewe.works" rel="noopener">Un agent sur mesure</a>
+            <a class="btn btn-main btn-lg" href="https://ewe.works" data-magnet rel="noopener"><span><b>Confier mon agent à EWE Works</b><small>Conception et programmation sur mesure</small></span></a>
+            <a class="btn btn-ghost" href="./docs.html">Comment ça marche</a>
           </div>
         </div>
-        <div class="flow reveal" aria-label="Ework sur votre bureau, l'API de Hermes, votre agent sur son serveur">
+        <div class="flow reveal" aria-label="Ework sur votre bureau, l’API de l’agent, votre agent sur son serveur">
           <svg viewBox="0 0 560 360" class="flow-svg" aria-hidden="true">
             <defs>
               <linearGradient id="wire" x1="0" x2="1"><stop offset="0" stop-color="#e600bf" /><stop offset="1" stop-color="#82ffe4" /></linearGradient>
@@ -242,52 +245,39 @@
             <circle class="pulse p1" r="4" /><circle class="pulse p2" r="4" /><circle class="pulse p3" r="4" /><circle class="pulse p4" r="4" />
           </svg>
           <div class="node n1"><div class="rig-host" data-tech-rig></div><b>Ework</b><span>sur votre bureau</span></div>
-          <div class="node n2"><div class="core"><span></span><span></span><span></span></div><b>API Hermes</b><span>missions, événements, accords</span></div>
+          <div class="node n2"><div class="core"><span></span><span></span><span></span></div><b>API de l’agent</b><span>missions, événements, accords</span></div>
           <div class="node n3"><div class="server"><i></i><i></i><i></i></div><b>Votre agent</b><span>sur son serveur</span></div>
         </div>
       </section>
 
-      <!-- ============ Developers ============ -->
-      <section class="dev" id="developeurs">
-        <header class="section-head reveal">
-          <p class="kicker">Pour les développeurs</p>
-          <h2>Branché sur l'API Hermes,<br />rien de plus.</h2>
-          <p>Ework parle le langage standard de Hermes : les missions (runs), leur flux d'événements, les accords, les sessions, les tâches planifiées. Votre agent sait le relier lui-même.</p>
-        </header>
-        <div class="code reveal" data-tabs>
-          <div class="tabs" role="tablist" aria-label="Exemples">
-            <button role="tab" aria-selected="true" aria-controls="t1" id="b1">Relier en une ligne</button>
-            <button role="tab" aria-selected="false" aria-controls="t2" id="b2" tabindex="-1">Prévenir Ework</button>
-            <button role="tab" aria-selected="false" aria-controls="t3" id="b3" tabindex="-1">Ce qu'il montre</button>
-          </div>
-          <div class="panel" role="tabpanel" id="t1" aria-labelledby="b1">
-            <p class="cap">Votre agent active son serveur d'API, puis répond par une seule ligne. Collez-la dans Ework : la clé va directement dans le trousseau du système.</p>
-            <pre><code><span class="c"># ~/.hermes/.env de votre agent</span>
-<span class="k">API_SERVER_ENABLED</span>=true
-<span class="k">API_SERVER_KEY</span>=<span class="s">••••••••••••</span>
+      <!-- ============ Documentation ============ -->
+      <section class="docs-teaser">
+        <a class="teaser reveal" href="./docs.html" data-spot>
+          <span class="kicker">Documentation technique</span>
+          <b>Comment Ework se relie à votre agent, ce qu'il écoute, ce qu'il garde, comment il le protège.</b>
+          <span class="teaser-go">Lire la documentation <i aria-hidden="true">→</i></span>
+          <pre aria-hidden="true"><code><span class="c">// une mission, vue par Ework</span>
+<span class="k">message.delta</span>    → <span class="s">type</span>
+<span class="k">tool.started</span>     → <span class="s">search</span>
+<span class="k">approval.request</span> → <span class="s">ask</span>
+<span class="k">run.completed</span>    → <span class="s">celebrate</span></code></pre>
+        </a>
+      </section>
 
-<span class="c"># la ligne à coller dans Ework</span>
-<span class="u">ework://connect?url=</span><span class="s">https://agent.exemple.fr</span><span class="u">&amp;key=</span><span class="s">••••</span></code></pre>
+      <!-- ============ EWE Works ============ -->
+      <section class="ewe-band">
+        <div class="band reveal" data-spot>
+          <div class="band-copy">
+            <p class="kicker">Pas encore d'agent ?</p>
+            <h2><strong>EWE Works</strong> le conçoit,<br />le programme et le relie.</h2>
+            <p>Un agent adapté à votre métier, branché sur vos outils, livré avec Ework. Vous n'avez rien à installer côté serveur : <strong>nous nous occupons de tout.</strong></p>
+            <div class="ctas">
+              <a class="btn btn-main btn-lg" href="https://ewe.works" data-magnet rel="noopener"><span><b>Découvrir EWE Works</b><small>ewe.works</small></span></a>
+            </div>
           </div>
-          <div class="panel" role="tabpanel" id="t2" aria-labelledby="b2" hidden>
-            <p class="cap">Un script de votre agent prévient Ework quand il le décide. Ework écoute sur votre ordinateur, protégé par un jeton créé par lui, et ne fait qu'afficher : il n'exécute jamais rien de ce qu'il reçoit.</p>
-            <pre><code><span class="f">curl</span> -X POST http://100.64.0.12:47800/notice \
-  -H <span class="s">"Authorization: Bearer $EWORK_TOKEN"</span> \
-  -H <span class="s">"Content-Type: application/json"</span> \
-  -d <span class="s">'{"title":"Sauvegarde","text":"Terminée en 42 s","level":"info"}'</span></code></pre>
-          </div>
-          <div class="panel" role="tabpanel" id="t3" aria-labelledby="b3" hidden>
-            <p class="cap">Le cerveau d'Ework lit le flux d'événements de la mission et choisit le geste. Quelques exemples :</p>
-            <ul class="map">
-              <li><code>tool.started · web_search</code><span>cherche</span></li>
-              <li><code>tool.started · read_file</code><span>lit</span></li>
-              <li><code>tool.started · terminal</code><span>exécute</span></li>
-              <li><code>tool.started · delegate_task</code><span>délègue</span></li>
-              <li><code>message.delta</code><span>rédige</span></li>
-              <li><code>approval.request</code><span>vous demande votre accord</span></li>
-              <li><code>run.completed</code><span>fête ça</span></li>
-              <li><code>run.failed</code><span>s'excuse</span></li>
-            </ul>
+          <div class="band-art" aria-hidden="true">
+            <div class="rig-host" data-band-rig></div>
+            <ul class="band-list"><li>Conception de l'agent</li><li>Programmation des outils</li><li>Connexion à vos logiciels</li><li>Ework relié et prêt</li></ul>
           </div>
         </div>
       </section>
@@ -296,7 +286,7 @@
       <section class="final" id="telecharger">
         <div class="crowd" data-crowd aria-hidden="true"></div>
         <h2 class="reveal">Installez Ework.<br /><span class="shine">Il s'occupe du reste.</span></h2>
-        <p class="reveal">Gratuit, sans compte, sans droits administrateur. Il vous faut un agent Hermes avec son serveur d'API.</p>
+        <p class="reveal">Gratuit, sans compte, sans droits administrateur. Il se relie à votre agent IA en une ligne.</p>
         <div class="dl-cards reveal">
           <a class="dl-card" data-dl="win" data-spot href="https://github.com/maximelebatardsartre/ework/releases/latest">
             <span class="os-ico big" data-ico="win"></span>
@@ -323,6 +313,7 @@
         <p><b>Ework</b> · un projet <a href="https://ewe.works" rel="noopener">EWE Works</a><br />Développé par eSpri Studio. Tous droits réservés.</p>
       </div>
       <nav aria-label="Liens">
+        <a href="./docs.html">Documentation</a>
         <a href="https://github.com/maximelebatardsartre/ework">GitHub</a>
         <a href="https://github.com/maximelebatardsartre/ework/releases">Versions</a>
         <a href="https://github.com/maximelebatardsartre/ework/blob/main/LICENCE-UTILISATION.md">Licence d'utilisation</a>
