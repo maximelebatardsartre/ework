@@ -1,0 +1,6 @@
+# Engines read robots.txt only at the root of a host; this copy documents
+# the intent and is served at /ework/robots.txt.
+User-agent: *
+Allow: /
+
+Sitemap: https://maximelebatardsartre.github.io/ework/sitemap.xml

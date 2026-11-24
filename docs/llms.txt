@@ -1,0 +1,30 @@
+# Ework
+
+> Ework est un compagnon de bureau gratuit pour Windows 10 et 11 et macOS 11+ (bêta). Un personnage animé vit au bord des fenêtres et montre en temps réel ce que fait un agent d'intelligence artificielle : outils utilisés, rédaction, demandes d'accord. Il se relie à l'API d'un agent Hermes (Nous Research). Sans compte, sans télémétrie ; les secrets vont dans le trousseau du système. Logiciel propriétaire d'eSpri Studio, distribué gratuitement par EWE Works.
+
+Faits clés :
+
+- Prix : gratuit. Licence : propriétaire, tous droits réservés (eSpri Studio).
+- Systèmes : Windows 10 et 11 (64 bits, sans droits administrateur) ; macOS 11 et plus, Apple Silicon et Intel (bêta, pas encore notarié).
+- Technique : Tauri 2, Rust, Svelte 5. Le réseau, les secrets et les fichiers ne passent que par le cœur Rust.
+- Connexion : une ligne `ework://connect?url=…&key=…` donnée par l'agent ; HTTP n'est permis que vers un réseau privé.
+- API utilisée : `POST /v1/runs`, flux SSE `GET /v1/runs/{id}/events`, `POST /v1/runs/{id}/approval`, `/api/sessions`, `/api/jobs`.
+- Confidentialité : aucun compte, aucune télémétrie ; Ework ne contacte que l'agent indiqué et l'adresse des mises à jour (signées).
+- Agents sur mesure : EWE Works (https://ewe.works) conçoit et programme des agents reliés aux outils de l'entreprise, livrés avec Ework.
+
+## Pages
+
+- [Présentation](https://maximelebatardsartre.github.io/ework/) : ce que fait Ework, ses animations, son apparence, la confidentialité, les questions fréquentes, les téléchargements.
+- [Documentation technique](https://maximelebatardsartre.github.io/ework/docs.html) : architecture, connexion à l'API Hermes, cycle d'une mission, événements, accords, conversations, webhook, fichiers, sécurité, référence des appels.
+
+## Téléchargement
+
+- [Dernière version (Windows .exe, macOS .dmg)](https://github.com/maximelebatardsartre/ework/releases/latest)
+- [Installation pas à pas](https://github.com/maximelebatardsartre/ework#installer-ework)
+
+## Optional
+
+- [Licence d'utilisation](https://github.com/maximelebatardsartre/ework/blob/main/LICENCE-UTILISATION.md)
+- [Confidentialité](https://github.com/maximelebatardsartre/ework/blob/main/CONFIDENTIALITE.md)
+- [Politique de sécurité](https://github.com/maximelebatardsartre/ework/blob/main/SECURITY.md)
+- [EWE Works](https://ewe.works)

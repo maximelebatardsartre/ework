@@ -3,129 +3,176 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ework — le visage de votre agent IA</title>
-    <meta name="description" content="Ework vit sur votre bureau et vous montre, en temps réel, ce que fait votre agent IA. Gratuit pour Windows et macOS. Conçu par EWE Works." />
-    <meta name="theme-color" content="#0b1216" />
-    <meta property="og:title" content="Ework — le visage de votre agent IA" />
-    <meta property="og:description" content="Un compagnon de bureau animé qui montre ce que fait votre agent. Gratuit, sans compte, sans télémétrie." />
+    <title>Ework — le compagnon de bureau de votre agent IA (Windows, macOS)</title>
+    <meta name="description" content="Ework est un compagnon de bureau gratuit pour Windows et macOS. Il marche sur le bord de vos fenêtres et montre en temps réel ce que fait votre agent IA : recherches, rédaction, demandes d'accord. Un projet EWE Works." />
+    <link rel="canonical" href="https://maximelebatardsartre.github.io/ework/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#131d22" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="author" content="eSpri Studio" />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Ework" />
+    <meta property="og:title" content="Ework — le compagnon de bureau de votre agent IA" />
+    <meta property="og:description" content="Gratuit pour Windows et macOS. Il montre en temps réel ce que fait votre agent IA, sans compte ni télémétrie." />
+    <meta property="og:url" content="https://maximelebatardsartre.github.io/ework/" />
+    <meta property="og:image" content="https://maximelebatardsartre.github.io/ework/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ework, le compagnon de bureau de votre agent IA" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="./assets/favicon-C1S6E5RX.svg" type="image/svg+xml" />
-    <script type="module" crossorigin src="./assets/index-DyC2RIBK.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/menu-LfB9it--.js">
-    <link rel="stylesheet" crossorigin href="./assets/menu-ZyfJ5kZ3.css">
+    <link rel="preload" href="./fonts/grotesk.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/jakarta.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="sitemap" type="application/xml" href="./sitemap.xml" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://maximelebatardsartre.github.io/ework/#app",
+            "name": "Ework",
+            "description": "Compagnon de bureau animé qui montre en temps réel ce que fait un agent d'intelligence artificielle : outils utilisés, rédaction, demandes d'accord. Il se relie à l'API de votre agent.",
+            "applicationCategory": "DesktopEnhancementApplication",
+            "applicationSubCategory": "Assistant d'agent IA",
+            "operatingSystem": "Windows 10, Windows 11, macOS 11 ou plus récent",
+            "softwareVersion": "0.1.6",
+            "inLanguage": "fr",
+            "isAccessibleForFree": true,
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+            "downloadUrl": "https://github.com/maximelebatardsartre/ework/releases/latest",
+            "softwareHelp": "https://maximelebatardsartre.github.io/ework/docs.html",
+            "image": "https://maximelebatardsartre.github.io/ework/og.png",
+            "url": "https://maximelebatardsartre.github.io/ework/",
+            "author": { "@type": "Organization", "name": "eSpri Studio" },
+            "publisher": { "@id": "https://ewe.works/#org" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://ewe.works/#org",
+            "name": "EWE Works",
+            "url": "https://ewe.works",
+            "description": "Conception et programmation d'agents d'intelligence artificielle sur mesure."
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              { "@type": "Question", "name": "Qu'est-ce qu'Ework ?", "acceptedAnswer": { "@type": "Answer", "text": "Un compagnon de bureau gratuit pour Windows et macOS. Il vit au bord de vos fenêtres et montre ce que fait votre agent IA pendant qu'il travaille : il cherche, rédige, lit, range, vous demande votre accord." } },
+              { "@type": "Question", "name": "Ework est-il gratuit ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui : gratuit, sans compte et sans publicité. Il reste un logiciel propriétaire d'eSpri Studio, distribué par EWE Works." } },
+              { "@type": "Question", "name": "Avec quel agent fonctionne-t-il ?", "acceptedAnswer": { "@type": "Answer", "text": "Il se relie à l'API d'un agent compatible, sur votre ordinateur, votre réseau ou un serveur. L'agent peut se régler lui-même et vous donner une seule ligne à coller." } },
+              { "@type": "Question", "name": "Mes données quittent-elles mon ordinateur ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. Ework n'a ni compte ni télémétrie. Il ne contacte que votre agent et l'adresse des mises à jour, et range la clé de l'agent dans le trousseau du système." } },
+              { "@type": "Question", "name": "Me gênera-t-il pendant une présentation ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. Il se cache ou passe sur un autre écran dès qu'une application est en plein écran, pendant vos heures calmes ou quand un programme choisi est ouvert." } },
+              { "@type": "Question", "name": "Je n'ai pas d'agent IA. Que faire ?", "acceptedAnswer": { "@type": "Answer", "text": "EWE Works conçoit et programme des agents sur mesure, reliés à vos outils et livrés avec Ework : https://ewe.works" } }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script type="module" crossorigin src="./assets/index-BndvaUYb.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/menu-WfuX1_xE.js">
+    <link rel="stylesheet" crossorigin href="./assets/menu-CJUg7sd7.css">
     <link rel="stylesheet" crossorigin href="./assets/index-Bt3AXyQ_.css">
   </head>
   <body>
     <a class="skip" href="#contenu">Aller au contenu</a>
-    <canvas class="aurora" aria-hidden="true"></canvas>
-    <div class="grain" aria-hidden="true"></div>
 
     <header class="nav" data-nav>
-      <a class="brand" href="#top" aria-label="Ework, accueil">
+      <a class="brand" href="./" aria-label="Ework, accueil">
         <svg viewBox="0 0 240 194" aria-hidden="true"><path fill="currentColor" d="M148.3 19.7 121 58.7a1 1 0 0 1-1.7 0L90 20.8a8.4 8.4 0 0 0-12.8-.8L18.5 80.6a9 9 0 0 0 0 12.5l70.4 72.6a43.4 43.4 0 0 0 62.3 0l70.3-72.6a9 9 0 0 0 0-12.5l-60-62a8.4 8.4 0 0 0-13.2 1.1Z" /></svg>
         <span>Ework</span>
       </a>
       <nav class="menu" id="menu" aria-label="Menu principal">
         <a href="./" aria-current="page">Présentation</a>
         <a href="./docs.html">Documentation</a>
-        <a class="menu-ewe" href="https://ewe.works" rel="noopener">EWE Works</a>
+        <a href="https://ewe.works" rel="noopener">EWE Works</a>
         <a class="btn btn-main menu-dl" href="#telecharger">Télécharger Ework</a>
       </nav>
-      <a class="btn btn-main btn-sm nav-dl" href="#telecharger" data-magnet>Télécharger</a>
+      <a class="btn btn-main btn-sm nav-dl" href="#telecharger">Télécharger</a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu" data-burger><span></span><span></span></button>
     </header>
 
     <main id="contenu">
       <!-- ============ Hero ============ -->
-      <section class="hero" id="top">
+      <section class="hero wrap" aria-labelledby="titre">
         <div class="hero-copy">
-          <p class="eyebrow reveal"><span class="dot"></span> Gratuit · Windows · macOS <em>bêta</em> · <span data-version>v0.1</span></p>
-          <h1 class="reveal">
-            <span class="line">Votre agent IA</span>
-            <span class="line">a enfin <span class="shine">un visage.</span></span>
-          </h1>
-          <p class="lede reveal">Ework vit sur votre bureau, marche sur le bord de vos fenêtres et vous montre, en temps réel, ce que fait votre agent IA. Vous lui parlez, vous lui confiez des missions, vous le voyez travailler.</p>
-          <div class="ctas reveal">
-            <a class="btn btn-main btn-lg" data-dl="main" data-magnet href="https://github.com/maximelebatardsartre/ework/releases/latest">
-              <span class="os-ico" data-os-ico></span>
-              <span><b data-dl-label>Télécharger pour Windows</b><small data-dl-meta>Windows 10 et 11 · 64 bits</small></span>
+          <h1 id="titre">Le compagnon de bureau de votre agent IA</h1>
+          <p class="lede">Ework vit au bord de vos fenêtres. Pendant que votre agent travaille, il vous montre ce qu'il fait : il cherche, rédige, range, et vous demande votre accord avant d'agir.</p>
+          <div class="ctas">
+            <a class="btn btn-main btn-lg" data-dl="main" href="https://github.com/maximelebatardsartre/ework/releases/latest">
+              <span class="os-ico" data-os-ico></span><span data-dl-label>Télécharger pour Windows</span>
             </a>
             <a class="btn btn-ghost btn-lg" data-dl="alt" href="https://github.com/maximelebatardsartre/ework/releases/latest">
-              <span class="os-ico" data-os-ico-alt></span>
-              <span><b data-dl-alt-label>macOS (bêta)</b><small data-dl-alt-meta>Apple Silicon et Intel</small></span>
+              <span class="os-ico" data-os-ico-alt></span><span data-dl-alt-label>macOS (bêta)</span>
             </a>
           </div>
-          <ul class="trust reveal">
-            <li>Sans compte</li>
-            <li>Sans télémétrie</li>
-            <li>Mises à jour signées</li>
-          </ul>
+          <dl class="facts">
+            <div><dt>Prix</dt><dd>Gratuit, sans compte</dd></div>
+            <div><dt>Systèmes</dt><dd>Windows 10 et 11 · macOS 11+</dd></div>
+            <div><dt>Version</dt><dd><span data-version>0.1.6</span> · <span data-size>4,7 Mo</span></dd></div>
+          </dl>
         </div>
 
-        <div class="desk reveal" data-desk aria-label="Ework sur un bureau : il marche sur une fenêtre pendant que l'agent travaille">
-          <div class="win win-doc" data-tilt>
-            <div class="win-bar"><i></i><i></i><i></i><span>rapport-cuivre.md</span></div>
-            <div class="win-body paper" data-doc>
-              <p class="h">Le cuivre cette semaine</p>
-              <p class="l w90"></p><p class="l w75"></p><p class="l w85"></p>
-              <div class="chart"><span style="--h:38%"></span><span style="--h:52%"></span><span style="--h:46%"></span><span style="--h:64%"></span><span style="--h:58%"></span><span style="--h:77%"></span><span style="--h:88%"></span></div>
-              <p class="l w60"></p><p class="l w80"></p>
+        <figure class="desk" data-desk aria-label="Démonstration : Ework sur le bord d'une fenêtre pendant que l'agent mène une mission">
+          <div class="screen">
+            <div class="win win-doc">
+              <div class="win-bar"><i></i><i></i><i></i><span>rapport-cuivre.md</span></div>
+              <div class="win-body paper" data-doc>
+                <p class="h">Le cuivre cette semaine</p>
+                <p class="l w90"></p><p class="l w75"></p><p class="l w85"></p>
+                <div class="chart"><span style="--h:38%"></span><span style="--h:52%"></span><span style="--h:46%"></span><span style="--h:64%"></span><span style="--h:58%"></span><span style="--h:77%"></span><span style="--h:88%"></span></div>
+                <p class="l w60"></p>
+              </div>
             </div>
+            <div class="win win-chat">
+              <div class="win-bar"><i></i><i></i><i></i><span>Ework · Conversation</span></div>
+              <div class="win-body chat">
+                <p class="msg me" data-ask></p>
+                <p class="status" data-status><span class="spin"></span><span data-status-text>Prêt</span></p>
+                <p class="msg agent" data-answer></p>
+              </div>
+              <div class="walkway" data-walkway>
+                <div class="bubble" data-bubble aria-live="polite"></div>
+                <button class="rig-host hero-rig" type="button" data-hero-rig aria-label="Cliquer sur Ework"></button>
+              </div>
+            </div>
+            <div class="toast" data-toast role="status"><b>Mission terminée</b><span>Rapport rangé dans vos documents</span></div>
+            <div class="taskbar" aria-hidden="true"><span class="tb-start"></span><span></span><span></span><span class="tb-on"></span><time data-clock>10:42</time></div>
           </div>
-          <div class="win win-chat" data-tilt>
-            <div class="win-bar"><i></i><i></i><i></i><span>Ework · Conversation</span></div>
-            <div class="win-body chat">
-              <p class="msg me" data-ask></p>
-              <p class="status" data-status><span class="spin"></span><span data-status-text>Prêt</span></p>
-              <p class="msg agent" data-answer></p>
-            </div>
-            <div class="walkway" data-walkway>
-              <div class="bubble" data-bubble aria-live="polite"></div>
-              <div class="rig-host hero-rig" data-hero-rig title="Cliquez sur Ework"></div>
-            </div>
-          </div>
-          <div class="toast" data-toast role="status"><b>Mission terminée</b><span>Rapport rangé dans vos documents</span></div>
-        </div>
-        <a class="scroll-cue" href="#agent" aria-label="Découvrir">
-          <span></span>
-        </a>
+          <button class="pause" type="button" data-pause aria-pressed="false">Mettre en pause</button>
+        </figure>
       </section>
 
-      <!-- ============ Verbs ============ -->
-      <div class="marquee" aria-hidden="true">
-        <div class="track">
-          <span>écoute</span><span>réfléchit</span><span>cherche</span><span>rédige</span><span>lit</span><span>range</span><span>envoie</span><span>analyse</span><span>exécute</span><span>délègue</span><span>patiente</span><span>vous demande votre accord</span><span>fête ça</span>
-          <span>écoute</span><span>réfléchit</span><span>cherche</span><span>rédige</span><span>lit</span><span>range</span><span>envoie</span><span>analyse</span><span>exécute</span><span>délègue</span><span>patiente</span><span>vous demande votre accord</span><span>fête ça</span>
-        </div>
-      </div>
-
-      <!-- ============ The story of a mission ============ -->
-      <section class="story" id="agent">
-        <header class="section-head reveal">
-          <p class="kicker">L'agent, enfin visible</p>
-          <h2>Vous voyez ce qu'il fait,<br />au moment où il le fait.</h2>
-          <p>Chaque événement de votre agent devient un geste. Ework ne fait pas semblant : il suit les outils que l'agent utilise, ses réponses et ses questions.</p>
+      <!-- ============ A mission ============ -->
+      <section class="story wrap" id="agent" aria-labelledby="t-agent">
+        <header class="head">
+          <h2 id="t-agent">Une mission, du message au résultat</h2>
+          <p>Chaque geste d'Ework vient d'un vrai événement de votre agent : l'outil qu'il ouvre, le texte qu'il écrit, la question qu'il vous pose.</p>
         </header>
         <div class="story-grid">
           <ol class="steps" data-steps>
             <li data-step="listen" data-say="Fais le point sur mes devis en attente.">
-              <span class="n">01</span><h3>Vous lui parlez</h3><p>Un clic sur Ework : sa bulle s'ouvre au-dessus de lui. Vous écrivez, il écoute. Ou bien un raccourci, d'où que vous soyez.</p>
+              <h3>Vous lui écrivez</h3>
+              <p>Un clic sur Ework ouvre sa bulle, juste au-dessus de lui. Ou un raccourci clavier, depuis n'importe quel programme.</p>
             </li>
             <li data-step="think" data-say="Je regarde ce qui est en attente…">
-              <span class="n">02</span><h3>Il réfléchit</h3><p>L'agent prépare sa réponse sur son serveur. Ework le montre, sans terminal ni journal à lire.</p>
+              <h3>Il réfléchit</h3>
+              <p>L'agent prépare sa réponse sur son serveur. Vous le voyez, sans terminal ni journal à lire.</p>
             </li>
             <li data-step="search" data-say="Cherche dans la boîte de réception">
-              <span class="n">03</span><h3>Il cherche, il lit, il range</h3><p>Une recherche sur le web, un fichier à lire, un dossier à ranger : chaque outil a son geste.</p>
+              <h3>Il cherche, lit et range</h3>
+              <p>Une recherche sur le web, un fichier à lire, un dossier à ranger : chaque outil a son geste, et la bulle dit lequel.</p>
             </li>
             <li data-step="ask" data-say="Relancer les 4 clients par e-mail ?" data-approve>
-              <span class="n">04</span><h3>Il vous demande votre accord</h3><p>Avant d'envoyer un e-mail ou de lancer une commande, l'agent demande. Vous approuvez ou refusez d'un clic, même quand Ework est caché.</p>
+              <h3>Il demande votre accord</h3>
+              <p>Avant d'envoyer un e-mail ou de lancer une commande, l'agent attend. Vous approuvez ou refusez d'un clic. Si Ework est caché, une notification vous prévient.</p>
             </li>
             <li data-step="celebrate" data-say="C'est fait : 4 relances envoyées.">
-              <span class="n">05</span><h3>C'est fait</h3><p>La réponse s'écrit dans la bulle, le compteur avance, et Ework fête ça. Sobrement.</p>
+              <h3>Il rend compte</h3>
+              <p>La réponse s'écrit dans la bulle, la mission rejoint votre historique, et Ework le fête, brièvement.</p>
             </li>
           </ol>
           <div class="story-stage" aria-hidden="true">
-            <div class="halo"></div>
             <div class="story-bubble" data-story-bubble>
               <span data-story-text>Fais le point sur mes devis en attente.</span>
               <span class="approve" data-story-approve><b>Approuver</b><i>Refuser</i></span>
@@ -137,186 +184,114 @@
       </section>
 
       <!-- ============ States ============ -->
-      <section class="states" id="etats">
-        <header class="section-head reveal">
-          <p class="kicker">Plus de 70 états animés</p>
-          <h2>Jamais une pose figée.</h2>
-          <p>Chaque animation est écrite en temps : l'élan, l'action, la suite, puis le retour au calme. Par-dessus, il respire, cligne des yeux et suit votre souris du regard. Survolez-les.</p>
+      <section class="states wrap" id="etats" aria-labelledby="t-etats">
+        <header class="head">
+          <h2 id="t-etats">Plus de 70 animations, écrites une à une</h2>
+          <p>Chacune a son élan, son action et son retour au calme. Par-dessus, il respire, cligne des yeux et suit votre souris du regard. Passez sur une case pour la rejouer.</p>
         </header>
         <div class="state-grid" data-states></div>
       </section>
 
       <!-- ============ Appearance ============ -->
-      <section class="looks" id="apparence">
-        <div class="looks-stage reveal">
-          <div class="pedestal"></div>
-          <div class="rig-host looks-rig" data-looks-rig></div>
-          <button class="btn btn-ghost btn-sm dice" type="button" data-random>Tirer au hasard</button>
-        </div>
+      <section class="looks wrap" id="apparence" aria-labelledby="t-looks">
         <div class="looks-copy">
-          <header class="section-head left reveal">
-            <p class="kicker">Il vous ressemble</p>
-            <h2>Faites le vôtre,<br />pièce par pièce.</h2>
-            <p>Couleur, yeux, bouche, couvre-chef, lunettes, col. Certaines pièces se gagnent avec le temps. Essayez ici, c'est le même Ework que dans l'application.</p>
+          <header class="head">
+            <h2 id="t-looks">Son apparence, à votre goût</h2>
+            <p>Couleur, yeux, bouche, couvre-chef, lunettes, col. Essayez ici : c'est le même Ework que dans l'application.</p>
           </header>
-          <div class="pickers reveal" data-pickers></div>
+          <div class="pickers" data-pickers></div>
+        </div>
+        <div class="looks-stage">
+          <div class="rig-host looks-rig" data-looks-rig></div>
+          <button class="btn btn-ghost" type="button" data-random>Tirer au hasard</button>
         </div>
       </section>
 
-      <!-- ============ Life ============ -->
-      <section class="life">
-        <header class="section-head reveal">
-          <p class="kicker">Il vit avec vous</p>
-          <h2>Un café le matin, une sieste le soir.</h2>
-          <p>Il suit l'heure de votre journée, réagit à une copie, à la musique, à un fichier qu'on lui tend. Et dès qu'une application passe en plein écran, il se fait oublier.</p>
+      <!-- ============ Trust ============ -->
+      <section class="trust wrap" id="confiance" aria-labelledby="t-trust">
+        <header class="head">
+          <h2 id="t-trust">Ce qu'Ework garde pour lui</h2>
+          <p>Il voit passer le travail de votre agent. Rien de tout cela ne quitte votre ordinateur.</p>
         </header>
-        <div class="day" data-day>
-          <figure><div class="rig-host" data-life="coffee"></div><figcaption><b>8 h 30</b>Le café</figcaption></figure>
-          <figure><div class="rig-host" data-life="type"></div><figcaption><b>10 h</b>Au travail</figcaption></figure>
-          <figure><div class="rig-host" data-life="lunch"></div><figcaption><b>12 h 30</b>Le déjeuner</figcaption></figure>
-          <figure><div class="rig-host" data-life="music"></div><figcaption><b>16 h</b>Un peu de musique</figcaption></figure>
-          <figure><div class="rig-host" data-life="sleep"></div><figcaption><b>23 h</b>Bonne nuit</figcaption></figure>
-        </div>
-      </section>
-
-      <!-- ============ Bento ============ -->
-      <section class="bento-wrap">
-        <header class="section-head reveal">
-          <p class="kicker">Pensé pour le travail</p>
-          <h2>Puissant, discret,<br />et entièrement à vous.</h2>
-        </header>
-        <div class="bento">
-          <article class="card c-wide reveal" data-spot>
-            <div class="ico-lock" aria-hidden="true"><span></span></div>
-            <h3>Tout reste sur votre ordinateur</h3>
-            <p>Aucun compte, aucune télémétrie. La clé de votre agent est rangée dans le trousseau du système. Ework ne contacte que votre agent et l'adresse des mises à jour.</p>
-          </article>
-          <article class="card reveal" data-spot>
-            <div class="ico-full" aria-hidden="true"><span></span></div>
-            <h3>Discret en plein écran</h3>
-            <p>Présentation, vidéo, visioconférence : il disparaît ou passe sur l'autre écran. Heures calmes et programmes choisis aussi.</p>
-          </article>
-          <article class="card reveal" data-spot>
-            <div class="ico-check" aria-hidden="true"><span></span></div>
-            <h3>Vous gardez la main</h3>
-            <p>L'agent demande avant d'agir. Une notification vous prévient si Ework est caché.</p>
-          </article>
-          <article class="card reveal" data-spot>
-            <div class="ico-files" aria-hidden="true"><i></i><i></i><i></i></div>
-            <h3>Les fichiers de l'agent</h3>
-            <p>Ce qu'il a écrit, ce que vous lui confiez : parcourez, ouvrez, déposez.</p>
-          </article>
-          <article class="card reveal" data-spot>
-            <div class="ico-clock" aria-hidden="true"><span></span></div>
-            <h3>Missions et tâches planifiées</h3>
-            <p>Tout l'historique, des filtres, le détail de chaque étape. Et les tâches de l'agent arrivent d'elles-mêmes.</p>
-          </article>
-          <article class="card c-wide reveal" data-spot>
-            <div class="crests" aria-hidden="true"><span class="b"></span><span class="s"></span><span class="g"></span><span class="p"></span><span class="e"></span></div>
-            <h3>Une progression sobre</h3>
-            <p>Niveaux, rangs, badges et une carte à partager. Facultative, comptée sur votre ordinateur, et sans aucun classement entre personnes.</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- ============ Technology ============ -->
-      <section class="tech" id="technologie">
-        <div class="tech-copy">
-          <header class="section-head left reveal">
-            <p class="kicker">La technologie EWE Works</p>
-            <h2>Gratuit pour tous.<br /><span class="shine">Taillé pour vos agents.</span></h2>
-            <p><strong>Ework est offert à tout le monde</strong> : il se relie à votre agent IA, sur votre ordinateur, votre réseau ou un serveur.</p>
-            <p>Il est né chez <strong class="ewe">EWE Works</strong>, pour être le visage des agents que nous concevons sur mesure. <strong>EWE Works s'occupe de tout programmer</strong> : l'agent, ses outils, ses accès à vos logiciels, et Ework qui vous le montre au travail.</p>
-          </header>
-          <div class="ctas reveal">
-            <a class="btn btn-main btn-lg" href="https://ewe.works" data-magnet rel="noopener"><span><b>Confier mon agent à EWE Works</b><small>Conception et programmation sur mesure</small></span></a>
-            <a class="btn btn-ghost" href="./docs.html">Comment ça marche</a>
-          </div>
-        </div>
-        <div class="flow reveal" aria-label="Ework sur votre bureau, l’API de l’agent, votre agent sur son serveur">
-          <svg viewBox="0 0 560 360" class="flow-svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="wire" x1="0" x2="1"><stop offset="0" stop-color="#e600bf" /><stop offset="1" stop-color="#82ffe4" /></linearGradient>
-            </defs>
-            <path class="wire" d="M120 180 C 200 100, 240 100, 280 180" />
-            <path class="wire" d="M280 180 C 320 260, 360 260, 440 180" />
-            <path class="wire back" d="M440 180 C 360 100, 320 100, 280 180" />
-            <path class="wire back" d="M280 180 C 240 260, 200 260, 120 180" />
-            <circle class="pulse p1" r="4" /><circle class="pulse p2" r="4" /><circle class="pulse p3" r="4" /><circle class="pulse p4" r="4" />
-          </svg>
-          <div class="node n1"><div class="rig-host" data-tech-rig></div><b>Ework</b><span>sur votre bureau</span></div>
-          <div class="node n2"><div class="core"><span></span><span></span><span></span></div><b>API de l’agent</b><span>missions, événements, accords</span></div>
-          <div class="node n3"><div class="server"><i></i><i></i><i></i></div><b>Votre agent</b><span>sur son serveur</span></div>
-        </div>
-      </section>
-
-      <!-- ============ Documentation ============ -->
-      <section class="docs-teaser">
-        <a class="teaser reveal" href="./docs.html" data-spot>
-          <span class="kicker">Documentation technique</span>
-          <b>Comment Ework se relie à votre agent, ce qu'il écoute, ce qu'il garde, comment il le protège.</b>
-          <span class="teaser-go">Lire la documentation <i aria-hidden="true">→</i></span>
-          <pre aria-hidden="true"><code><span class="c">// une mission, vue par Ework</span>
-<span class="k">message.delta</span>    → <span class="s">type</span>
-<span class="k">tool.started</span>     → <span class="s">search</span>
-<span class="k">approval.request</span> → <span class="s">ask</span>
-<span class="k">run.completed</span>    → <span class="s">celebrate</span></code></pre>
-        </a>
+        <ul class="points">
+          <li><h3>Aucun compte, aucune télémétrie</h3><p>Ework ne contacte que votre agent et l'adresse des mises à jour. Pas d'inscription, pas de statistiques d'usage.</p></li>
+          <li><h3>La clé dans le trousseau</h3><p>La clé de votre agent et vos mots de passe vont dans le trousseau de Windows ou de macOS, jamais dans un fichier.</p></li>
+          <li><h3>Discret au travail</h3><p>Il se cache ou change d'écran en plein écran, pendant vos heures calmes ou quand un programme choisi est ouvert.</p></li>
+          <li><h3>Vous gardez la main</h3><p>L'agent demande avant d'agir. Les secrets qu'il écrit sont masqués avant d'entrer dans l'historique.</p></li>
+          <li><h3>Les fichiers de l'agent</h3><p>Parcourez, ouvrez et déposez des documents chez lui. Ework n'ouvre que les types sûrs ; le reste se télécharge.</p></li>
+          <li><h3>Des mises à jour signées</h3><p>Chaque version est signée et vérifiée avant d'être installée, et jamais pendant une présentation.</p></li>
+        </ul>
       </section>
 
       <!-- ============ EWE Works ============ -->
-      <section class="ewe-band">
-        <div class="band reveal" data-spot>
-          <div class="band-copy">
-            <p class="kicker">Pas encore d'agent ?</p>
-            <h2><strong>EWE Works</strong> le conçoit,<br />le programme et le relie.</h2>
-            <p>Un agent adapté à votre métier, branché sur vos outils, livré avec Ework. Vous n'avez rien à installer côté serveur : <strong>nous nous occupons de tout.</strong></p>
-            <div class="ctas">
-              <a class="btn btn-main btn-lg" href="https://ewe.works" data-magnet rel="noopener"><span><b>Découvrir EWE Works</b><small>ewe.works</small></span></a>
-            </div>
+      <section class="ewe wrap" id="ewe-works" aria-labelledby="t-ewe">
+        <div class="ewe-copy">
+          <h2 id="t-ewe"><strong>EWE Works</strong> programme votre agent</h2>
+          <p><strong>Ework est gratuit pour tout le monde</strong> et se relie à votre agent IA, où qu'il tourne.</p>
+          <p>Il est né chez EWE Works, pour être le visage des agents que nous concevons sur mesure. <strong>Nous nous occupons de tout programmer</strong> : l'agent, ses outils, ses accès à vos logiciels, et Ework relié, prêt à l'emploi.</p>
+          <div class="ctas">
+            <a class="btn btn-main btn-lg" href="https://ewe.works" rel="noopener">Confier mon agent à EWE Works</a>
+            <a class="btn btn-ghost btn-lg" href="./docs.html">Lire la documentation</a>
           </div>
-          <div class="band-art" aria-hidden="true">
-            <div class="rig-host" data-band-rig></div>
-            <ul class="band-list"><li>Conception de l'agent</li><li>Programmation des outils</li><li>Connexion à vos logiciels</li><li>Ework relié et prêt</li></ul>
-          </div>
+        </div>
+        <div class="ewe-art">
+          <div class="rig-host" data-band-rig aria-hidden="true"></div>
+          <ol class="deliver">
+            <li>Conception de l'agent, avec vous</li>
+            <li>Programmation de ses outils</li>
+            <li>Connexion à vos logiciels</li>
+            <li>Ework installé et relié</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ FAQ ============ -->
+      <section class="faq wrap" id="questions" aria-labelledby="t-faq">
+        <header class="head">
+          <h2 id="t-faq">Questions fréquentes</h2>
+        </header>
+        <div class="qa">
+          <details open><summary>Qu'est-ce qu'Ework ?</summary><p>Un compagnon de bureau gratuit pour Windows et macOS. Il vit au bord de vos fenêtres et montre ce que fait votre agent IA pendant qu'il travaille : il cherche, rédige, lit, range, vous demande votre accord.</p></details>
+          <details><summary>Ework est-il gratuit ?</summary><p>Oui : gratuit, sans compte et sans publicité. Il reste un logiciel propriétaire d'eSpri Studio, distribué par EWE Works.</p></details>
+          <details><summary>Avec quel agent fonctionne-t-il ?</summary><p>Il se relie à l'API d'un agent compatible, sur votre ordinateur, votre réseau ou un serveur. L'agent peut se régler lui-même et vous donner une seule ligne à coller. Les détails sont dans la <a href="./docs.html#relier">documentation</a>.</p></details>
+          <details><summary>Mes données quittent-elles mon ordinateur ?</summary><p>Non. Ework n'a ni compte ni télémétrie. Il ne contacte que votre agent et l'adresse des mises à jour, et range la clé de l'agent dans le trousseau du système.</p></details>
+          <details><summary>Me gênera-t-il pendant une présentation ?</summary><p>Non. Il se cache ou passe sur un autre écran dès qu'une application est en plein écran, pendant vos heures calmes ou quand un programme choisi est ouvert.</p></details>
+          <details><summary>Je n'ai pas d'agent IA. Que faire ?</summary><p><strong>EWE Works conçoit et programme des agents sur mesure</strong>, reliés à vos outils et livrés avec Ework. <a href="https://ewe.works" rel="noopener">Découvrir EWE Works</a></p></details>
         </div>
       </section>
 
       <!-- ============ Download ============ -->
-      <section class="final" id="telecharger">
+      <section class="final wrap" id="telecharger" aria-labelledby="t-dl">
         <div class="crowd" data-crowd aria-hidden="true"></div>
-        <h2 class="reveal">Installez Ework.<br /><span class="shine">Il s'occupe du reste.</span></h2>
-        <p class="reveal">Gratuit, sans compte, sans droits administrateur. Il se relie à votre agent IA en une ligne.</p>
-        <div class="dl-cards reveal">
-          <a class="dl-card" data-dl="win" data-spot href="https://github.com/maximelebatardsartre/ework/releases/latest">
-            <span class="os-ico big" data-ico="win"></span>
+        <h2 id="t-dl">Télécharger Ework</h2>
+        <p class="final-lede">Gratuit, sans droits administrateur. Il se relie à votre agent en une ligne.</p>
+        <div class="dl-cards">
+          <a class="dl-card" data-dl="win" href="https://github.com/maximelebatardsartre/ework/releases/latest">
+            <span class="os-ico" data-ico="win"></span>
             <b>Windows</b>
             <span>Windows 10 et 11, 64 bits</span>
-            <small data-meta="win">Installateur · .exe</small>
-            <em class="go">Télécharger</em>
+            <small data-meta="win">Installateur .exe</small>
           </a>
-          <a class="dl-card" data-dl="mac" data-spot href="https://github.com/maximelebatardsartre/ework/releases/latest">
-            <span class="os-ico big" data-ico="mac"></span>
+          <a class="dl-card" data-dl="mac" href="https://github.com/maximelebatardsartre/ework/releases/latest">
+            <span class="os-ico" data-ico="mac"></span>
             <b>macOS <i class="beta">bêta</i></b>
             <span>macOS 11 et plus, Apple Silicon et Intel</span>
-            <small data-meta="mac">Image disque · .dmg</small>
-            <em class="go">Télécharger</em>
+            <small data-meta="mac">Image disque .dmg</small>
           </a>
         </div>
-        <p class="note reveal">Sur Mac, Ework n'est pas encore notarié par Apple : au premier lancement, ouvrez <b>Réglages Système › Confidentialité et sécurité</b>, puis <b>Ouvrir quand même</b>. <a href="https://github.com/maximelebatardsartre/ework#installer-ework">Le mode d'emploi complet</a></p>
+        <p class="note">Sur Mac, Ework n'est pas encore notarié par Apple. Au premier lancement, ouvrez <b>Réglages Système › Confidentialité et sécurité</b>, puis choisissez <b>Ouvrir quand même</b>. <a href="https://github.com/maximelebatardsartre/ework#installer-ework">Voir l'installation pas à pas</a></p>
       </section>
     </main>
 
-    <footer class="foot">
+    <footer class="foot wrap">
       <div class="foot-brand">
         <svg viewBox="0 0 240 194" aria-hidden="true"><path fill="currentColor" d="M148.3 19.7 121 58.7a1 1 0 0 1-1.7 0L90 20.8a8.4 8.4 0 0 0-12.8-.8L18.5 80.6a9 9 0 0 0 0 12.5l70.4 72.6a43.4 43.4 0 0 0 62.3 0l70.3-72.6a9 9 0 0 0 0-12.5l-60-62a8.4 8.4 0 0 0-13.2 1.1Z" /></svg>
-        <p><b>Ework</b> · un projet <a href="https://ewe.works" rel="noopener">EWE Works</a><br />Développé par eSpri Studio. Tous droits réservés.</p>
+        <p><b>Ework</b>, un projet <a href="https://ewe.works" rel="noopener">EWE Works</a>. Développé par eSpri Studio, tous droits réservés.</p>
       </div>
-      <nav aria-label="Liens">
+      <nav aria-label="Liens du pied de page">
         <a href="./docs.html">Documentation</a>
-        <a href="https://github.com/maximelebatardsartre/ework">GitHub</a>
         <a href="https://github.com/maximelebatardsartre/ework/releases">Versions</a>
-        <a href="https://github.com/maximelebatardsartre/ework/blob/main/LICENCE-UTILISATION.md">Licence d'utilisation</a>
+        <a href="https://github.com/maximelebatardsartre/ework/blob/main/LICENCE-UTILISATION.md">Licence</a>
         <a href="https://github.com/maximelebatardsartre/ework/blob/main/CONFIDENTIALITE.md">Confidentialité</a>
         <a href="https://github.com/maximelebatardsartre/ework/blob/main/SECURITY.md">Sécurité</a>
       </nav>

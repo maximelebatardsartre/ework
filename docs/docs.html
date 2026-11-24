@@ -3,18 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Documentation technique — Ework</title>
-    <meta name="description" content="Comment Ework se relie à un agent Hermes : API, flux d'événements, accords, conversations, webhook, fichiers, sécurité et architecture." />
-    <meta name="theme-color" content="#0b1216" />
+    <title>Documentation technique d'Ework : API Hermes, événements, sécurité</title>
+    <meta name="description" content="Comment Ework se relie à un agent Hermes : appels de l'API (runs, flux SSE, accords, sessions), cycle d'une mission, webhook local, fichiers du tableau de bord, trousseau du système et mises à jour signées." />
+    <link rel="canonical" href="https://maximelebatardsartre.github.io/ework/docs.html" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#131d22" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Ework" />
+    <meta property="og:title" content="Documentation technique d'Ework" />
+    <meta property="og:description" content="API Hermes, flux d'événements, accords, webhook, fichiers, sécurité : tout ce qu'Ework appelle, écoute et garde." />
+    <meta property="og:url" content="https://maximelebatardsartre.github.io/ework/docs.html" />
+    <meta property="og:image" content="https://maximelebatardsartre.github.io/ework/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="./assets/favicon-C1S6E5RX.svg" type="image/svg+xml" />
-    <script type="module" crossorigin src="./assets/docs-CCQVUghu.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/menu-LfB9it--.js">
-    <link rel="stylesheet" crossorigin href="./assets/menu-ZyfJ5kZ3.css">
-    <link rel="stylesheet" crossorigin href="./assets/docs-C0jMvYj8.css">
+    <link rel="preload" href="./fonts/grotesk.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/jakarta.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "TechArticle",
+            "headline": "Documentation technique d'Ework",
+            "description": "Architecture d'Ework et intégration avec l'API d'un agent Hermes : runs, flux SSE, accords, sessions, webhook local, fichiers, sécurité.",
+            "inLanguage": "fr",
+            "proficiencyLevel": "Expert",
+            "dependencies": "Agent Hermes (Nous Research) avec son API server",
+            "about": { "@id": "https://maximelebatardsartre.github.io/ework/#app" },
+            "author": { "@type": "Organization", "name": "eSpri Studio" },
+            "publisher": { "@type": "Organization", "name": "EWE Works", "url": "https://ewe.works" },
+            "url": "https://maximelebatardsartre.github.io/ework/docs.html",
+            "image": "https://maximelebatardsartre.github.io/ework/og.png"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Ework", "item": "https://maximelebatardsartre.github.io/ework/" },
+              { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://maximelebatardsartre.github.io/ework/docs.html" }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script type="module" crossorigin src="./assets/docs-WPIO4tjR.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/menu-WfuX1_xE.js">
+    <link rel="stylesheet" crossorigin href="./assets/menu-CJUg7sd7.css">
+    <link rel="stylesheet" crossorigin href="./assets/docs-DayJQrXV.css">
   </head>
   <body class="docs">
     <a class="skip" href="#doc">Aller au contenu</a>
-    <canvas class="aurora" aria-hidden="true"></canvas>
 
     <header class="nav" data-nav>
       <a class="brand" href="./" aria-label="Ework, accueil">
@@ -24,7 +63,7 @@
       <nav class="menu" id="menu" aria-label="Menu principal">
         <a href="./">Présentation</a>
         <a href="./docs.html" aria-current="page">Documentation</a>
-        <a class="menu-ewe" href="https://ewe.works" rel="noopener">EWE Works</a>
+        <a href="https://ewe.works" rel="noopener">EWE Works</a>
         <a class="btn btn-main menu-dl" href="./#telecharger">Télécharger Ework</a>
       </nav>
       <a class="btn btn-main btn-sm nav-dl" href="./#telecharger">Télécharger</a>
@@ -392,7 +431,7 @@
           </div>
         </section>
 
-        <aside class="doc-ewe" data-spot>
+        <aside class="doc-ewe">
           <p class="kicker">Ne rien programmer vous-même</p>
           <h2><strong>EWE Works</strong> conçoit votre agent, le programme et le relie à Ework.</h2>
           <p>De l'agent à ses outils et ses accès à vos logiciels : nous nous occupons de tout.</p>
